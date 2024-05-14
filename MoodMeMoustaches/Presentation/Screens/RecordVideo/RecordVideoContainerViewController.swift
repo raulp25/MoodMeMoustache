@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecordVideoContainerViewController: UIViewController {
+final class RecordVideoContainerViewController: UIViewController {
     
     let recordVideoVC = RecordVideoViewController()
     

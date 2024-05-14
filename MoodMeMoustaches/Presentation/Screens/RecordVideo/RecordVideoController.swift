@@ -27,7 +27,6 @@ class RecordVideoViewController: UIViewController {
        let iv = UIImageView()
         iv.clipsToBounds = true
         iv.contentMode = .scaleAspectFill
-        iv.translatesAutoresizingMaskIntoConstraints = false
         iv.tintColor = .white
         iv.image = UIImage(systemName: "timelapse")
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRecordVideo))
@@ -36,10 +35,15 @@ class RecordVideoViewController: UIViewController {
         return iv
     }()
     
-    private var bgView: UIView = {
+    private lazy var bgView: UIView = {
         let uv = UIView()
         uv.backgroundColor = customRGBColor(red: 161, green: 86, blue: 227)
         uv.layer.cornerRadius = 35
+        uv.layer.borderColor = UIColor.white.withAlphaComponent(0.6).cgColor
+        uv.layer.borderWidth = 1.2
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRecordVideo))
+        uv.isUserInteractionEnabled = true
+        uv.addGestureRecognizer(tapGesture)
         return uv
     }()
     
@@ -172,6 +176,7 @@ class RecordVideoViewController: UIViewController {
             
             viewModel.isRecording = false
             bgView.backgroundColor = customRGBColor(red: 161, green: 86, blue: 227)
+            bgView.layer.borderColor = UIColor.white.withAlphaComponent(0.6).cgColor
         } else {
 //            recorder?.record()
 //            capture?.recordAudio(enable: true)
@@ -179,6 +184,8 @@ class RecordVideoViewController: UIViewController {
 //            capture?.recordAudio(enable: true)
             viewModel.isRecording = true
             bgView.backgroundColor = .black
+            bgView.layer.borderColor = UIColor.red.cgColor
+            bgView.layer.borderWidth = 1.2
         }
         
         print(": => recording tap my g")

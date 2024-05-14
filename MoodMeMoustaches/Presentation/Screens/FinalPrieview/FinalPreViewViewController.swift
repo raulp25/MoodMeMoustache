@@ -9,10 +9,11 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class FinalPreViewViewController: UIViewController {
+final class FinalPreViewViewController: UIViewController {
+    let viewModel = FinalPreViewViewModel()
     let player = Player()
     
-    private let dummyView = DummyView()
+    private let dummyView = DummyView(hidesKeyBoardWhenTappedAround: true)
     
     lazy private var closeButton: UIImageView = {
        let iv = UIImageView()
@@ -29,7 +30,7 @@ class FinalPreViewViewController: UIViewController {
     
     private lazy var nextButton: CustomButton = {
         let btn = CustomButton(viewModel: .init(title: "Next"))
-        btn.backgroundColor = .systemRed
+        btn.backgroundColor = #colorLiteral(red: 0.7818982904, green: 0.5797014751, blue: 0.9752335696, alpha: 1)
         btn.addTarget(self, action: #selector(didTapNext), for: .touchUpInside)
         return btn
     }()
@@ -126,16 +127,10 @@ extension FinalPreViewViewController {
         dummyView.view.alpha = 0
         dummyView.view.backgroundColor = .black.withAlphaComponent(0.3)
         
-        uploadVideoView.anchor(
-            top: dummyView.view.safeAreaLayoutGuide.topAnchor,
-            left: dummyView.view.leftAnchor,
-            bottom: dummyView.view.keyboardLayoutGuide.topAnchor,
-            right: dummyView.view.rightAnchor,
-            paddingTop: 50,
-            paddingLeft: 30,
-            paddingBottom: 30,
-            paddingRight: 30
-        )
+        uploadVideoView
+            .center(inView: dummyView.view)
+        uploadVideoView.setDimensions(height: 290, width: view.frame.size.width / 1.3)
+        uploadVideoView.backgroundColor = .white
         uploadVideoView.layer.cornerRadius = 15
         
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) { [weak self] in
@@ -143,18 +138,35 @@ extension FinalPreViewViewController {
         }
         self.view.layoutIfNeeded()
     }
+    
+    func dismissModal() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) { [weak self] in
+            self?.dummyView.view.alpha = 0
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                self?.dummyView.remove()
+                self?.view.layoutIfNeeded()
+            })
+        }
+    }
 }
 
 extension FinalPreViewViewController: GenericModalDelegate {
     func didTapLeftBtn() {
-        print(": => ")
+        print("DEBUG: tapped left button => ")
+        dismissModal()
     }
     
     func didTapRightBtn() {
-        print(": => ")
+        Task {
+            await viewModel.uploadVideo(url: url, duration: player.itemDuration, tag: viewModel.tag)
+            DispatchQueue.main.async { [weak self] in
+                self?.dismissVC()
+            }
+        }
     }
     
     func textFieldDidCHange(text: String) {
-        print(": => ")
+        viewModel.tag = text.trimWhiteSpaces()
     }
 }

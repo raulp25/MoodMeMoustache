@@ -17,16 +17,17 @@ class GenericModal: UIView {
     private let titleLabel: UILabel = {
        let label = UILabel()
         label.text = "Title"
-        label.textColor = .label
-        label.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         return label
     }()
     
     private let descriptionLabel: UILabel = {
        let label = UILabel()
         label.text = "description label"
-        label.textColor = .label
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         return label
     }()
     
@@ -36,19 +37,21 @@ class GenericModal: UIView {
     }()
     
     private lazy var leftBtn: UIButton = {
-        let btn = UIButton.createTextButton(with: "cancel", fontSize: 13, color: UIColor.orange)
+        let btn = CustomButton(viewModel: .init(title: "cancel"))
+        btn.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
         btn.addTarget(self, action: #selector(didTapLeftBtn), for: .touchUpInside)
         return btn
     }()
     
     private lazy var rightBtn: UIButton = {
-        let btn = UIButton.createTextButton(with: "accept", fontSize: 13, color: UIColor.purple)
+        let btn = CustomButton(viewModel: .init(title: "accpet"))
+        btn.backgroundColor = #colorLiteral(red: 0.7818982904, green: 0.5797014751, blue: 0.9752335696, alpha: 1)
         btn.addTarget(self, action: #selector(didTapRightBtn), for: .touchUpInside)
         return btn
     }()
     
-    private var horizontalPadding: CGFloat = 10
-    private var verticallPadding: CGFloat = 5
+    private var horizontalPadding: CGFloat = 25
+    private var verticalPadding: CGFloat = 15
     
     weak var delegate: GenericModalDelegate?
     private var leftBtnWidth: CGFloat
@@ -84,6 +87,7 @@ class GenericModal: UIView {
     func setupUI() {
         addSubview(titleLabel)
         addSubview(descriptionLabel)
+        addSubview(tagTextField)
         addSubview(leftBtn)
         addSubview(rightBtn)
         
@@ -91,29 +95,43 @@ class GenericModal: UIView {
             top: topAnchor,
             left: leftAnchor,
             right: rightAnchor,
-            paddingTop: verticallPadding
+            paddingTop: verticalPadding
         )
         
         descriptionLabel.anchor(
-            top: titleLabel.bottomAnchor,
+            left: leftAnchor,
+            bottom: tagTextField.topAnchor,
+            right: rightAnchor,
+            paddingLeft: horizontalPadding,
+            paddingBottom: 10,
+            paddingRight: horizontalPadding
+        )
+        
+        tagTextField
+            .center(inView: self)
+        tagTextField.anchor(
             left: leftAnchor,
             right: rightAnchor,
-            paddingTop: 10
+            paddingLeft: horizontalPadding,
+            paddingRight: horizontalPadding
         )
         
         leftBtn.anchor(
             left: leftAnchor,
             bottom: bottomAnchor,
             paddingLeft: horizontalPadding,
-            paddingBottom: verticallPadding
+            paddingBottom: verticalPadding
         )
+        
+        leftBtn.setDimensions(height: 49, width: 120)
         
         rightBtn.anchor(
             bottom: bottomAnchor,
             right: rightAnchor,
-            paddingBottom: verticallPadding,
+            paddingBottom: verticalPadding,
             paddingRight: horizontalPadding
         )
+        rightBtn.setDimensions(height: 40, width: 120)
     }
     
     @objc func textFieldDidChange(_ notification: Notification) {

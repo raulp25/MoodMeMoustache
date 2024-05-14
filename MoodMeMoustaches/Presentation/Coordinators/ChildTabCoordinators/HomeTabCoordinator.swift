@@ -17,7 +17,7 @@ final class HomeTabCoordinator: NSObject, ChildTabCoordinator {
 //    let viewModel: PetsViewModel =
     
     func start() {
-        let vc = HomeViewController()
+        let vc = VideoFeedViewController()
 //        vc.delegate = self
         rootViewController.navigationBar.isHidden = true
         rootViewController.pushViewController(vc, animated: true)

@@ -9,10 +9,10 @@ import Foundation
 import AVKit
 import Combine
 
-class Player {
+final class Player {
     
     let player = AVPlayer()
-    var itemDuration: TimeInterval = 0
+    var itemDuration: Double = 0
     var isLoadingVideo = false
     
     private var subscriptions = Set<AnyCancellable>()
@@ -36,19 +36,19 @@ class Player {
     }
     
     
-   private func loadPlayerItem(_ videoURL: URL) async {
-            
-            let asset = AVAsset(url: videoURL)
-            do {
-                let (_, _, _) = try await asset.load(.tracks, .duration, .preferredTransform)
-            } catch let error {
-                print(error.localizedDescription)
-            }
-            
-            let item = AVPlayerItem(asset: asset)
-        player.replaceCurrentItem(with: item)
-            
+    private func loadPlayerItem(_ videoURL: URL) async {
+        
+        let asset = AVAsset(url: videoURL)
+        do {
+            let (_, _, _) = try await asset.load(.tracks, .duration, .preferredTransform)
+        } catch let error {
+            print(error.localizedDescription)
         }
+        
+        let item = AVPlayerItem(asset: asset)
+        player.replaceCurrentItem(with: item)
+        
+    }
     
     
     private func addItemDurationPublisher() {

@@ -55,7 +55,7 @@ final class CustomTextField: UITextField {
             
         }
         
-        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemCyan])
+        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         font = .boldSystemFont(ofSize: 16)
         
         setHeight(50)
