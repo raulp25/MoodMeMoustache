@@ -12,6 +12,8 @@ import AVFoundation
 class FinalPreViewViewController: UIViewController {
     let player = Player()
     
+    private let dummyView = DummyView()
+    
     lazy private var closeButton: UIImageView = {
        let iv = UIImageView()
         iv.clipsToBounds = true
@@ -91,52 +93,68 @@ class FinalPreViewViewController: UIViewController {
     }
         
     
+    private func dismissVC() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @objc private func didTapClose() {
         print(": => did tap close")
-        navigationController?.popViewController(animated: true)
+        dismissVC()
     }
     
     @objc private func didTapNext() {
         print(": =>upload tapped")
+        showModal()
     }
     
 }
 
-//extension FinalPreViewViewController {
-//    func showModal() {
-//        let uploadVideoVC = BreedPopupSearch()
-//        uploadVideoVC.delgate = self
-//        
-//        searchController.delegate = self
-//        searchController.breedsForType = viewModel.typeState
-//        
-//        
-//        add(dummyView)
-//        self.view.bringSubviewToFront(dummyView.view)
-//        dummyView.add(dummyNavigator)
-//
-//        dummyView.view.fillSuperview()
-//        dummyView.view.alpha = 0
-//        dummyView.view.backgroundColor = .black.withAlphaComponent(0.3)
-//        
-//        dummyNavigator.view.anchor(
-//            top: dummyView.view.safeAreaLayoutGuide.topAnchor,
-//            left: dummyView.view.leftAnchor,
-//            bottom: dummyView.view.keyboardLayoutGuide.topAnchor,
-//            right: dummyView.view.rightAnchor,
-//            paddingTop: 50,
-//            paddingLeft: 30,
-//            paddingBottom: 30,
-//            paddingRight: 30
-//        )
-//        dummyNavigator.view.layer.cornerRadius = 15
-//        
-//        self.collectionView.isUserInteractionEnabled = false
-//        
-//        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) { [weak self] in
-//            self?.dummyView.view.alpha = 1
-//        }
-//        self.view.layoutIfNeeded()
-//    }
-//}
+extension FinalPreViewViewController {
+    func showModal() {
+        let uploadVideoView = GenericModal(title: "Video tag",
+                                         description: "Set your video tag",
+                                         leftBtnWidth: 100,
+                                         rightBtnWidth: 100)
+        uploadVideoView.delegate = self
+        
+        
+        add(dummyView)
+        self.view.bringSubviewToFront(dummyView.view)
+        dummyView.view.addSubview(uploadVideoView)
 
+        dummyView.view.fillSuperview()
+        dummyView.view.alpha = 0
+        dummyView.view.backgroundColor = .black.withAlphaComponent(0.3)
+        
+        uploadVideoView.anchor(
+            top: dummyView.view.safeAreaLayoutGuide.topAnchor,
+            left: dummyView.view.leftAnchor,
+            bottom: dummyView.view.keyboardLayoutGuide.topAnchor,
+            right: dummyView.view.rightAnchor,
+            paddingTop: 50,
+            paddingLeft: 30,
+            paddingBottom: 30,
+            paddingRight: 30
+        )
+        uploadVideoView.layer.cornerRadius = 15
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) { [weak self] in
+            self?.dummyView.view.alpha = 1
+        }
+        self.view.layoutIfNeeded()
+    }
+}
+
+extension FinalPreViewViewController: GenericModalDelegate {
+    func didTapLeftBtn() {
+        print(": => ")
+    }
+    
+    func didTapRightBtn() {
+        print(": => ")
+    }
+    
+    func textFieldDidCHange(text: String) {
+        print(": => ")
+    }
+}

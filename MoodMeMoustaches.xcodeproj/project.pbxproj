@@ -63,6 +63,10 @@
 		C40310F02BF3286A00E469C0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310ED2BF3286A00E469C0 /* Colors.swift */; };
 		C45D75E12BF32AF6005EF17A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45D75E02BF32AF6005EF17A /* Player.swift */; };
 		C48EFE7D2BF330A300DAAF06 /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48EFE7C2BF330A300DAAF06 /* DurationFormatter.swift */; };
+		C4C2FE492BF3A6C400294E31 /* UIButton+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2FE482BF3A6C400294E31 /* UIButton+Factory.swift */; };
+		C4C2FE4B2BF3A6EE00294E31 /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2FE4A2BF3A6EE00294E31 /* DummyView.swift */; };
+		C4C2FE4E2BF3A6FE00294E31 /* GenericModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2FE4D2BF3A6FE00294E31 /* GenericModal.swift */; };
+		C4C2FE512BF3AB5100294E31 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2FE502BF3AB5100294E31 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +124,10 @@
 		C40310ED2BF3286A00E469C0 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C45D75E02BF32AF6005EF17A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C48EFE7C2BF330A300DAAF06 /* DurationFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationFormatter.swift; sourceTree = "<group>"; };
+		C4C2FE482BF3A6C400294E31 /* UIButton+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Factory.swift"; sourceTree = "<group>"; };
+		C4C2FE4A2BF3A6EE00294E31 /* DummyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
+		C4C2FE4D2BF3A6FE00294E31 /* GenericModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericModal.swift; sourceTree = "<group>"; };
+		C4C2FE502BF3AB5100294E31 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,12 +220,10 @@
 		C403108A2BF3283100E469C0 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C40310B42BF3283100E469C0 /* Components */,
 				C403108B2BF3283100E469C0 /* Coordinators */,
 				C403109B2BF3283100E469C0 /* Cells */,
-				C40310A12BF3283100E469C0 /* SpinnerView.swift */,
 				C40310A22BF3283100E469C0 /* Screens */,
-				C40310B42BF3283100E469C0 /* Components */,
-				C40310B82BF3283100E469C0 /* Factories */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -380,6 +386,11 @@
 		C40310B42BF3283100E469C0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C4C2FE4F2BF3AB3300294E31 /* CustomTextField */,
+				C4C2FE4C2BF3A6F400294E31 /* Modal */,
+				C4C2FE4A2BF3A6EE00294E31 /* DummyView.swift */,
+				C40310A12BF3283100E469C0 /* SpinnerView.swift */,
+				C40310B82BF3283100E469C0 /* Factories */,
 				C40310B52BF3283100E469C0 /* CustomButton */,
 			);
 			path = Components;
@@ -397,6 +408,7 @@
 		C40310B82BF3283100E469C0 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
+				C4C2FE482BF3A6C400294E31 /* UIButton+Factory.swift */,
 				C40310B92BF3283100E469C0 /* UICollectionView+Factory.swift */,
 			);
 			path = Factories;
@@ -504,6 +516,22 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		C4C2FE4C2BF3A6F400294E31 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				C4C2FE4D2BF3A6FE00294E31 /* GenericModal.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		C4C2FE4F2BF3AB3300294E31 /* CustomTextField */ = {
+			isa = PBXGroup;
+			children = (
+				C4C2FE502BF3AB5100294E31 /* CustomTextField.swift */,
+			);
+			path = CustomTextField;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -596,6 +624,7 @@
 				C40310F02BF3286A00E469C0 /* Colors.swift in Sources */,
 				C40310C12BF3283100E469C0 /* InAppCoordinator.swift in Sources */,
 				C40310E62BF3285B00E469C0 /* RocketListMapper.swift in Sources */,
+				C4C2FE512BF3AB5100294E31 /* CustomTextField.swift in Sources */,
 				C40310E52BF3285B00E469C0 /* HTTPClient.swift in Sources */,
 				C40310C72BF3283100E469C0 /* MoustachesCollectionViewCell.swift in Sources */,
 				C40310762BF3278000E469C0 /* ARCapture-dummy.m in Sources */,
@@ -609,8 +638,10 @@
 				C40310E72BF3285B00E469C0 /* RocketListService.swift in Sources */,
 				C40310CD2BF3283100E469C0 /* MainTabBarController.swift in Sources */,
 				C40310C62BF3283100E469C0 /* RocketListCell.swift in Sources */,
+				C4C2FE4E2BF3A6FE00294E31 /* GenericModal.swift in Sources */,
 				C40310C22BF3283100E469C0 /* RecordVideoTabCoordinator.swift in Sources */,
 				C40310D12BF3283100E469C0 /* FinalPreViewModel.swift in Sources */,
+				C4C2FE492BF3A6C400294E31 /* UIButton+Factory.swift in Sources */,
 				C40310EF2BF3286A00E469C0 /* UIView+Extensions.swift in Sources */,
 				C40310692BF3277100E469C0 /* ARCapture.swift in Sources */,
 				C40310CC2BF3283100E469C0 /* RocketListWithCollectionViewViewController.swift in Sources */,
@@ -620,6 +651,7 @@
 				C40310D42BF3283100E469C0 /* CustomButton+ViewModel.swift in Sources */,
 				C40310BE2BF3283100E469C0 /* CoordinatorProtocol.swift in Sources */,
 				C45D75E12BF32AF6005EF17A /* Player.swift in Sources */,
+				C4C2FE4B2BF3A6EE00294E31 /* DummyView.swift in Sources */,
 				C40310CE2BF3283100E469C0 /* RecordVideoViewModel.swift in Sources */,
 				C40310DA2BF3284700E469C0 /* Rocket.swift in Sources */,
 				C40310682BF3277100E469C0 /* ARAssetWriter.swift in Sources */,
