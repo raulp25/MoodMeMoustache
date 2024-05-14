@@ -10,30 +10,31 @@ import AVKit
 import AVFoundation
 
 class FinalPreViewViewController: UIViewController {
+    let player = Player()
+    
     lazy private var closeButton: UIImageView = {
        let iv = UIImageView()
         iv.clipsToBounds = true
         iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.tintColor = .white
-        iv.image = UIImage(systemName: "cross")
+        iv.image = UIImage(systemName: "xmark")
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapClose))
         iv.isUserInteractionEnabled = true
         iv.addGestureRecognizer(tapGesture)
         return iv
     }()
     
-    private lazy var uploadButton: CustomButton = {
-        let btn = CustomButton(viewModel: .init(title: "Upload"))
+    private lazy var nextButton: CustomButton = {
+        let btn = CustomButton(viewModel: .init(title: "Next"))
         btn.backgroundColor = .systemRed
-        btn.addTarget(self, action: #selector(didTapUpload), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(didTapNext), for: .touchUpInside)
         return btn
     }()
     
+    let controller = AVPlayerViewController()
     var url: URL
     var showPreview: Bool = false
-    let player = AVPlayer()
-    let controller = AVPlayerViewController()
     init(url: URL) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
@@ -48,24 +49,16 @@ class FinalPreViewViewController: UIViewController {
         navigationController?.setToolbarHidden(true, animated:false)
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        controller.player = player
+        controller.player = player.player
         
-        let playerItem = AVPlayerItem(url: url)
-        
-        
-        // Set the new player item as current, and begin loading its data.
-        player.replaceCurrentItem(with: playerItem)
-        
-        player.seek(to: .zero, toleranceBefore: .zero, toleranceAfter: .zero)
-        
-        player.play()
+        Task{ await player.loadVideo(with: url) }
         
         addChild(controller)
         view.addSubview(controller.view)
         view.addSubview(closeButton)
-        view.addSubview(uploadButton)
+        view.addSubview(nextButton)
         
-//        controller.view.fillSuperview()
+
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
         let window = windowScene?.windows.first
@@ -89,39 +82,61 @@ class FinalPreViewViewController: UIViewController {
         )
         closeButton.setDimensions(height: 35, width: 35)
         
-        uploadButton.anchor(
+        nextButton.anchor(
             left: view.leftAnchor,
             bottom: view.safeAreaLayoutGuide.bottomAnchor,
             right: view.rightAnchor,
             paddingBottom: 15
         )
     }
-    
-    
-    
-    private func configureAudioSession() async {
-        let session = AVAudioSession.sharedInstance()
-        do {
-            // Configure the audio session for playback. Set the `moviePlayback` mode
-            // to reduce the audio's dynamic range to help normalize audio levels.
-            try session.setCategory(.playback, mode: .moviePlayback)
-        } catch {
-            print("Unable to configure audio session: => \(error.localizedDescription)")
-        }
-    }
-    
-    
+        
     
     @objc private func didTapClose() {
         print(": => did tap close")
         navigationController?.popViewController(animated: true)
     }
     
-    @objc private func didTapUpload() {
+    @objc private func didTapNext() {
         print(": =>upload tapped")
     }
     
-    
-    
 }
+
+//extension FinalPreViewViewController {
+//    func showModal() {
+//        let uploadVideoVC = BreedPopupSearch()
+//        uploadVideoVC.delgate = self
+//        
+//        searchController.delegate = self
+//        searchController.breedsForType = viewModel.typeState
+//        
+//        
+//        add(dummyView)
+//        self.view.bringSubviewToFront(dummyView.view)
+//        dummyView.add(dummyNavigator)
+//
+//        dummyView.view.fillSuperview()
+//        dummyView.view.alpha = 0
+//        dummyView.view.backgroundColor = .black.withAlphaComponent(0.3)
+//        
+//        dummyNavigator.view.anchor(
+//            top: dummyView.view.safeAreaLayoutGuide.topAnchor,
+//            left: dummyView.view.leftAnchor,
+//            bottom: dummyView.view.keyboardLayoutGuide.topAnchor,
+//            right: dummyView.view.rightAnchor,
+//            paddingTop: 50,
+//            paddingLeft: 30,
+//            paddingBottom: 30,
+//            paddingRight: 30
+//        )
+//        dummyNavigator.view.layer.cornerRadius = 15
+//        
+//        self.collectionView.isUserInteractionEnabled = false
+//        
+//        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) { [weak self] in
+//            self?.dummyView.view.alpha = 1
+//        }
+//        self.view.layoutIfNeeded()
+//    }
+//}
 

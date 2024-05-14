@@ -14,6 +14,6 @@ struct VideoUploader {
 //        let ref = Storage.storage().referfence.child("/videos\(filename)")
 //        let metadata = StorageMedata()
 //        metadata.contentType = "video/quicktime"
-        
+        return ""
     }
 }

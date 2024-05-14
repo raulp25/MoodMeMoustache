@@ -62,6 +62,7 @@
 		C40310EF2BF3286A00E469C0 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310EC2BF3286A00E469C0 /* UIView+Extensions.swift */; };
 		C40310F02BF3286A00E469C0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310ED2BF3286A00E469C0 /* Colors.swift */; };
 		C45D75E12BF32AF6005EF17A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45D75E02BF32AF6005EF17A /* Player.swift */; };
+		C48EFE7D2BF330A300DAAF06 /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48EFE7C2BF330A300DAAF06 /* DurationFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		C40310EC2BF3286A00E469C0 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		C40310ED2BF3286A00E469C0 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C45D75E02BF32AF6005EF17A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		C48EFE7C2BF330A300DAAF06 /* DurationFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +308,7 @@
 		C40310A22BF3283100E469C0 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C40310B02BF3283100E469C0 /* FinalPrieview */,
 				C40310A32BF3283100E469C0 /* Home */,
 				C40310A82BF3283100E469C0 /* Core */,
 				C40310AA2BF3283100E469C0 /* RecordVideo */,
@@ -345,7 +348,6 @@
 				C40310AB2BF3283100E469C0 /* ViewModel */,
 				C40310AD2BF3283100E469C0 /* RecordVideoContainerViewController.swift */,
 				C40310AE2BF3283100E469C0 /* RecordVideoController.swift */,
-				C40310AF2BF3283100E469C0 /* Views */,
 			);
 			path = RecordVideo;
 			sourceTree = "<group>";
@@ -356,14 +358,6 @@
 				C40310AC2BF3283100E469C0 /* RecordVideoViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		C40310AF2BF3283100E469C0 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C40310B02BF3283100E469C0 /* FinalPrieview */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		C40310B02BF3283100E469C0 /* FinalPrieview */ = {
@@ -478,6 +472,7 @@
 		C40310E92BF3286A00E469C0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				C48EFE7B2BF330A300DAAF06 /* Utils */,
 				C40310EA2BF3286A00E469C0 /* Extensions */,
 			);
 			path = Core;
@@ -499,6 +494,14 @@
 				C45D75E02BF32AF6005EF17A /* Player.swift */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		C48EFE7B2BF330A300DAAF06 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C48EFE7C2BF330A300DAAF06 /* DurationFormatter.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -625,6 +628,7 @@
 				C40310D22BF3283100E469C0 /* FinalPreViewViewController.swift in Sources */,
 				C40310C32BF3283100E469C0 /* ChildTabCoordinatorProtocol.swift in Sources */,
 				C40310C52BF3283100E469C0 /* NavCoordinatorProtocol.swift in Sources */,
+				C48EFE7D2BF330A300DAAF06 /* DurationFormatter.swift in Sources */,
 				C40310BD2BF3283100E469C0 /* ChildControllerManagableProtocol.swift in Sources */,
 				C40310BB2BF3283100E469C0 /* AppDelegate.swift in Sources */,
 				C40310C42BF3283100E469C0 /* HomeTabCoordinator.swift in Sources */,
