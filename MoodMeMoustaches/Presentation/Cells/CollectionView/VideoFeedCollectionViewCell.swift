@@ -25,7 +25,7 @@ class VideoFeedCollectionViewCell: UICollectionViewCell {
        let label = UILabel()
         label.text = "0:00"
         label.font = UIFont.systemFont(ofSize: 11, weight: .bold)
-        label.textColor = .label
+        label.textColor = .white
         label.numberOfLines = 1
         return label
     }()
@@ -34,7 +34,7 @@ class VideoFeedCollectionViewCell: UICollectionViewCell {
        let label = UILabel()
         label.text = ""
         label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-        label.textColor = .label
+        label.textColor = .white
         label.numberOfLines = 1
         label.lineBreakMode = .byTruncatingTail
         return label

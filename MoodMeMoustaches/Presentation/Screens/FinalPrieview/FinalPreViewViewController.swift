@@ -49,8 +49,6 @@ final class FinalPreViewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setToolbarHidden(true, animated:false)
-        navigationController?.setNavigationBarHidden(true, animated: false)
         
         controller.player = player.player
         

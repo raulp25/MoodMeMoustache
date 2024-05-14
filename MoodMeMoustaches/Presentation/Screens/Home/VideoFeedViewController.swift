@@ -22,7 +22,7 @@ final class VideoFeedViewController: UIViewController {
        let label = UILabel()
         label.text = "Record"
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         return label
     }()
     
@@ -63,7 +63,7 @@ final class VideoFeedViewController: UIViewController {
     }()
     
     private let horizontalPadding: CGFloat = 10
-    private let buttonContentHorizontalPadding: CGFloat = 7
+    private let buttonContentHorizontalPadding: CGFloat = 9
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +85,7 @@ final class VideoFeedViewController: UIViewController {
         navTitleLabel.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
             left: view.leftAnchor,
+            paddingTop: 5,
             paddingLeft: horizontalPadding
         )
         
@@ -94,20 +95,20 @@ final class VideoFeedViewController: UIViewController {
             right: view.rightAnchor,
             paddingRight: horizontalPadding
         )
-        createVideoButtonContainerUIView.setDimensions(height: 30, width: 70)
+        createVideoButtonContainerUIView.setDimensions(height: 30, width: 95)
         
         createVideoButtonLabel.anchor(
             top: createVideoButtonContainerUIView.topAnchor,
             left: createVideoButtonContainerUIView.leftAnchor,
             bottom: createVideoButtonContainerUIView.bottomAnchor,
-            paddingRight: buttonContentHorizontalPadding
+            paddingLeft: buttonContentHorizontalPadding
         )
         
         createVideoButtonImageView.anchor(
             top: createVideoButtonContainerUIView.topAnchor,
             bottom: createVideoButtonContainerUIView.bottomAnchor,
             right: createVideoButtonContainerUIView.rightAnchor,
-            paddingLeft: buttonContentHorizontalPadding
+            paddingRight: buttonContentHorizontalPadding
         )
         
         collectionView.anchor(
@@ -136,7 +137,11 @@ final class VideoFeedViewController: UIViewController {
     }
     
     @objc private func didTapCreateVideo() {
-        
+        if let tabBarController = self.tabBarController {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear) {
+                tabBarController.selectedIndex = 1
+            }
+        }
     }
 }
 
@@ -165,7 +170,7 @@ extension VideoFeedViewController: UICollectionViewDelegate, UICollectionViewDat
 
 extension VideoFeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (view.frame.size.width/2) - 8, height: (view.frame.size.width/2) - 8)
+        return CGSize(width: (view.frame.size.width/2) - 14, height: (view.frame.size.width/2) - 14) // 14 = insets left + right
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -177,7 +182,7 @@ extension VideoFeedViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 1, left: 7, bottom: 1, right: 7)
+        return UIEdgeInsets(top: 5, left: 7, bottom: 1, right: 7)
     }
 }
 

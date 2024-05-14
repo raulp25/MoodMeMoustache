@@ -106,6 +106,7 @@
 		C4C2FE9F2BF3BB3400294E31 /* VideoFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2FE9E2BF3BB3400294E31 /* VideoFeedViewModel.swift */; };
 		C4C2FEA12BF3C16D00294E31 /* VideoFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2FEA02BF3C16D00294E31 /* VideoFeedCollectionViewCell.swift */; };
 		C4C2FEA42BF3CEBC00294E31 /* EditVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2FEA32BF3CEBC00294E31 /* EditVideoViewController.swift */; };
+		C4C2FEA72BF3D12500294E31 /* GenericVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2FEA62BF3D12500294E31 /* GenericVideoPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,6 +179,7 @@
 		C4C2FE9E2BF3BB3400294E31 /* VideoFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedViewModel.swift; sourceTree = "<group>"; };
 		C4C2FEA02BF3C16D00294E31 /* VideoFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		C4C2FEA32BF3CEBC00294E31 /* EditVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoViewController.swift; sourceTree = "<group>"; };
+		C4C2FEA62BF3D12500294E31 /* GenericVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericVideoPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,6 +469,7 @@
 		C40310B42BF3283100E469C0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C4C2FEA52BF3D11100294E31 /* GenericVideoPlayer */,
 				C4C2FE4F2BF3AB3300294E31 /* CustomTextField */,
 				C4C2FE4C2BF3A6F400294E31 /* Modal */,
 				C4C2FE4A2BF3A6EE00294E31 /* DummyView.swift */,
@@ -661,6 +664,14 @@
 			path = EditVideo;
 			sourceTree = "<group>";
 		};
+		C4C2FEA52BF3D11100294E31 /* GenericVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				C4C2FEA62BF3D12500294E31 /* GenericVideoPlayerViewController.swift */,
+			);
+			path = GenericVideoPlayer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -798,6 +809,7 @@
 				C40310CB2BF3283100E469C0 /* HomeViewController.swift in Sources */,
 				C40310E72BF3285B00E469C0 /* RocketListService.swift in Sources */,
 				C40310CD2BF3283100E469C0 /* MainTabBarController.swift in Sources */,
+				C4C2FEA72BF3D12500294E31 /* GenericVideoPlayerViewController.swift in Sources */,
 				C40310C62BF3283100E469C0 /* RocketListCell.swift in Sources */,
 				C4C2FE4E2BF3A6FE00294E31 /* GenericModal.swift in Sources */,
 				C4C2FEA42BF3CEBC00294E31 /* EditVideoViewController.swift in Sources */,
