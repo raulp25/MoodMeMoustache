@@ -21,7 +21,7 @@ final class EditVideoViewController: UIViewController {
     private var videoPlayer: GenericVideoPlayerViewController?
     
     private lazy var backBtn: UIButton = {
-        let button = UIButton.createIconButton(icon: "chevron.backward", size: 16, color: .white)
+        let button = UIButton.createIconButton(icon: "chevron.backward", size: 18, color: .white)
         button.addTarget(self, action: #selector(didTapBackBtn), for: .touchUpInside)
         return button
     }()

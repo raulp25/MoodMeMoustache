@@ -18,12 +18,7 @@ final class InAppCoordinator: StateCoordinator, ChildControllerManagable {
     
     // MARK: - start
     func start() {
-//        let tabBarVC = MainTabBarController()
         setUpTabBarChildCoordinators(vc: rootViewController)
-        
-//        rootViewController.addChild(tabBarVC)
-//        let mainView = tabBarVC.view!
-//        mainView.fillSuperview()
     }
 
     func startChildTabCoordinator(with tab: TabBar) {

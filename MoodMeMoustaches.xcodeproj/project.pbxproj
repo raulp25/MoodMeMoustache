@@ -52,9 +52,6 @@
 		C40310D42BF3283100E469C0 /* CustomButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310B72BF3283100E469C0 /* CustomButton+ViewModel.swift */; };
 		C40310D52BF3283100E469C0 /* UICollectionView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310B92BF3283100E469C0 /* UICollectionView+Factory.swift */; };
 		C40310D62BF3283100E469C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310BA2BF3283100E469C0 /* SceneDelegate.swift */; };
-		C40310DA2BF3284700E469C0 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310D92BF3284700E469C0 /* Rocket.swift */; };
-		C40310E52BF3285B00E469C0 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310DE2BF3285B00E469C0 /* HTTPClient.swift */; };
-		C40310E62BF3285B00E469C0 /* RocketListMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310E22BF3285B00E469C0 /* RocketListMapper.swift */; };
 		C40310E72BF3285B00E469C0 /* RocketListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310E32BF3285B00E469C0 /* RocketListService.swift */; };
 		C40310E82BF3285B00E469C0 /* VideoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310E42BF3285B00E469C0 /* VideoUploader.swift */; };
 		C40310EE2BF3286A00E469C0 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310EB2BF3286A00E469C0 /* UIViewController+Extensions.swift */; };
@@ -158,9 +155,6 @@
 		C40310B72BF3283100E469C0 /* CustomButton+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomButton+ViewModel.swift"; sourceTree = "<group>"; };
 		C40310B92BF3283100E469C0 /* UICollectionView+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Factory.swift"; sourceTree = "<group>"; };
 		C40310BA2BF3283100E469C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C40310D92BF3284700E469C0 /* Rocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
-		C40310DE2BF3285B00E469C0 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		C40310E22BF3285B00E469C0 /* RocketListMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RocketListMapper.swift; sourceTree = "<group>"; };
 		C40310E32BF3285B00E469C0 /* RocketListService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RocketListService.swift; sourceTree = "<group>"; };
 		C40310E42BF3285B00E469C0 /* VideoUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploader.swift; sourceTree = "<group>"; };
 		C40310EB2BF3286A00E469C0 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -311,6 +305,8 @@
 			isa = PBXGroup;
 			children = (
 				C40310B42BF3283100E469C0 /* Components */,
+				C4C2FE4A2BF3A6EE00294E31 /* DummyView.swift */,
+				C40310A12BF3283100E469C0 /* SpinnerView.swift */,
 				C403108B2BF3283100E469C0 /* Coordinators */,
 				C403109B2BF3283100E469C0 /* Cells */,
 				C40310A22BF3283100E469C0 /* Screens */,
@@ -484,8 +480,6 @@
 				C4C2FEA52BF3D11100294E31 /* GenericVideoPlayer */,
 				C4C2FE4F2BF3AB3300294E31 /* CustomTextField */,
 				C4C2FE4C2BF3A6F400294E31 /* Modal */,
-				C4C2FE4A2BF3A6EE00294E31 /* DummyView.swift */,
-				C40310A12BF3283100E469C0 /* SpinnerView.swift */,
 				C40310B82BF3283100E469C0 /* Factories */,
 				C40310B52BF3283100E469C0 /* CustomButton */,
 			);
@@ -514,49 +508,23 @@
 			isa = PBXGroup;
 			children = (
 				C4C2FE8A2BF3B63900294E31 /* Video */,
-				C40310D82BF3284700E469C0 /* Rocket */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		C40310D82BF3284700E469C0 /* Rocket */ = {
-			isa = PBXGroup;
-			children = (
-				C40310D92BF3284700E469C0 /* Rocket.swift */,
-			);
-			path = Rocket;
 			sourceTree = "<group>";
 		};
 		C40310DB2BF3285B00E469C0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				C40310DC2BF3285B00E469C0 /* Network */,
 				C40310DF2BF3285B00E469C0 /* Services */,
 			);
 			path = Data;
 			sourceTree = "<group>";
 		};
-		C40310DC2BF3285B00E469C0 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				C40310DD2BF3285B00E469C0 /* HTTPClient */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		C40310DD2BF3285B00E469C0 /* HTTPClient */ = {
-			isa = PBXGroup;
-			children = (
-				C40310DE2BF3285B00E469C0 /* HTTPClient.swift */,
-			);
-			path = HTTPClient;
-			sourceTree = "<group>";
-		};
 		C40310DF2BF3285B00E469C0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C42E509B2BF4158F009CF01D /* VideoUploader */,
 				C40310E02BF3285B00E469C0 /* RocketListService */,
-				C40310E42BF3285B00E469C0 /* VideoUploader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -564,18 +532,9 @@
 		C40310E02BF3285B00E469C0 /* RocketListService */ = {
 			isa = PBXGroup;
 			children = (
-				C40310E12BF3285B00E469C0 /* Mappers */,
 				C40310E32BF3285B00E469C0 /* RocketListService.swift */,
 			);
 			path = RocketListService;
-			sourceTree = "<group>";
-		};
-		C40310E12BF3285B00E469C0 /* Mappers */ = {
-			isa = PBXGroup;
-			children = (
-				C40310E22BF3285B00E469C0 /* RocketListMapper.swift */,
-			);
-			path = Mappers;
 			sourceTree = "<group>";
 		};
 		C40310E92BF3286A00E469C0 /* Core */ = {
@@ -621,6 +580,14 @@
 				C42E50942BF40DD5009CF01D /* MockViewController.swift */,
 			);
 			path = MockVC;
+			sourceTree = "<group>";
+		};
+		C42E509B2BF4158F009CF01D /* VideoUploader */ = {
+			isa = PBXGroup;
+			children = (
+				C40310E42BF3285B00E469C0 /* VideoUploader.swift */,
+			);
+			path = VideoUploader;
 			sourceTree = "<group>";
 		};
 		C45D75DF2BF32A8C005EF17A /* Player */ = {
@@ -830,10 +797,8 @@
 				C4C2FE962BF3B7B600294E31 /* ValidatorType.swift in Sources */,
 				C40310F02BF3286A00E469C0 /* Colors.swift in Sources */,
 				C40310C12BF3283100E469C0 /* InAppCoordinator.swift in Sources */,
-				C40310E62BF3285B00E469C0 /* RocketListMapper.swift in Sources */,
 				C4C2FE8E2BF3B78000294E31 /* String+Extensions.swift in Sources */,
 				C4C2FE512BF3AB5100294E31 /* CustomTextField.swift in Sources */,
-				C40310E52BF3285B00E469C0 /* HTTPClient.swift in Sources */,
 				C40310C72BF3283100E469C0 /* MoustachesCollectionViewCell.swift in Sources */,
 				C4C2FE982BF3B7B600294E31 /* Validatable.swift in Sources */,
 				C40310762BF3278000E469C0 /* ARCapture-dummy.m in Sources */,
@@ -870,7 +835,6 @@
 				C45D75E12BF32AF6005EF17A /* Player.swift in Sources */,
 				C4C2FE4B2BF3A6EE00294E31 /* DummyView.swift in Sources */,
 				C40310CE2BF3283100E469C0 /* RecordVideoViewModel.swift in Sources */,
-				C40310DA2BF3284700E469C0 /* Rocket.swift in Sources */,
 				C42E508D2BF3E8CF009CF01D /* EditVideoViewModel.swift in Sources */,
 				C4C2FE8C2BF3B63E00294E31 /* Video.swift in Sources */,
 				C40310682BF3277100E469C0 /* ARAssetWriter.swift in Sources */,

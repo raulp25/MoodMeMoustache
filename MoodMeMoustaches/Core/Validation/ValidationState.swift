@@ -29,25 +29,25 @@ enum ValidationState: Equatable {
         var description: String {
             switch self {
             case .empty:
-                return "Campo vacío"
+                return "Empty field"
             case .invalidEmail:
-                return "Correo inválido"
+                return "Invalid email"
             case .invalidPhoneNum:
-                return "Numero de telefono inválido"
+                return "Ivalid phone number"
             case .toShortPassword:
-                return "Contraseña corta"
+                return "Wrong password"
             case .passwordNeedsNum:
-                return "Contraseña debe incluir un número"
+                return "Password must contain one number"
             case .passwordNeedsLetters:
-                return "Contraseña debe incluir letras"
+                return "Password must contain letters"
             case .nameCantHaveNumOrSpecialChars:
-                return "Sin espacios o carácteres espciales"
+                return "No spaces or spetial characters"
             case .passwordCantHaveSpacesOrSpecialChars:
-                return "Sin espacios o carácteres especiales"
+                return "No spaces or spetial characters"
             case .toShortName:
-                return "Mínimo 2 letras"
+                return "Min 2 characters"
             case .toLongName:
-                return "Máximo 12 letras"
+                return "Max 12 characters"
             case let .custom(text):
                 return text
             }

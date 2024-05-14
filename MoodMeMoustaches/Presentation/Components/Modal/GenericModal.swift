@@ -132,7 +132,8 @@ class GenericModal: UIView {
             paddingBottom: verticalPadding
         )
         
-        leftBtn.setDimensions(height: 40, width: 120)
+        leftBtn
+            .setDimensions(height: 40, width: 120)
         
         rightBtn.anchor(
             bottom: bottomAnchor,
@@ -140,7 +141,8 @@ class GenericModal: UIView {
             paddingBottom: verticalPadding,
             paddingRight: horizontalPadding
         )
-        rightBtn.setDimensions(height: 40, width: 120)
+        rightBtn
+            .setDimensions(height: 40, width: 120)
     }
     
     @objc func textFieldDidChange(_ notification: Notification) {
@@ -149,9 +151,7 @@ class GenericModal: UIView {
         else {
             return
         }
-        
             delegate?.textFieldDidCHange(text: text)
-        
     }
     
     @objc private func didTapLeftBtn() {
