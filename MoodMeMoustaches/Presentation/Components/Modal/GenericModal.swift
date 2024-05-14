@@ -75,13 +75,22 @@ class GenericModal: UIView {
         rightBtn.setTitle(rightBtnText, for: .normal)
         leftBtn.setTitle(leftBtnText, for: .normal)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange), name: UITextField.textDidChangeNotification, object: tagTextField)
+        NotificationCenter.default.addObserver(self, 
+                                               selector: #selector(textFieldDidChange),
+                                               name: UITextField.textDidChangeNotification,
+                                               object: tagTextField)
         
         setupUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UITextField.textDidChangeNotification,
+                                                  object: nil)
     }
     
     func setupUI() {

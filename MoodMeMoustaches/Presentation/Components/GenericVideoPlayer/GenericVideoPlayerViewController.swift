@@ -6,24 +6,41 @@
 //
 
 import UIKit
+import AVKit
 
 class GenericVideoPlayerViewController: UIViewController {
-
+    let player = Player()
+    let controller = AVPlayerViewController()
+    var url: URL
+    
+    init(url: URL) {
+        self.url = url
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        controller.player = player.player
+        
+        Task{ await player.loadVideo(with: url) }
+        
+        addChild(controller)
+        view.addSubview(controller.view)
+        controller.view.clipsToBounds = true
+        
+        controller.view.frame = CGRect(x: 0,
+                                       y: 0,
+                                       width:  view.bounds.size.width,
+                                       height: view.bounds.size.height)
+        
+        controller.view.layer.borderColor =  UIColor.white.cgColor
+        controller.view.layer.borderWidth = 2
+        controller.view.layer.cornerRadius = 10
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -8,14 +8,64 @@
 import UIKit
 import AVKit
 
+protocol EditVideoDelegate: NSObject {
+    func didSaved(tag: String, for videoIndex: Int)
+}
+
+
 final class EditVideoViewController: UIViewController {
     let player = Player()
     
-    let controller = AVPlayerViewController()
-    var url: URL
+    private var videoPlayer: GenericVideoPlayerViewController?
     
-    init(url: URL) {
-        self.url = url
+    private lazy var backBtn: UIButton = {
+        let button = UIButton.createIconButton(icon: "chevron.backward", size: 16, color: .white)
+        button.addTarget(self, action: #selector(didTapBackBtn), for: .touchUpInside)
+        return button
+    }()
+    
+    private let navTitleLabel: UILabel = {
+       let label = UILabel()
+        label.text = "Edit video"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        return label
+    }()
+    
+    // Needed to let videoPlayer Frame adjust correctly and appear on screen
+    private let emptyViewToAnchorVideoPlayer: UIView = {
+       let uv = UIView()
+        return uv
+    }()
+    
+    private let descriptionLabel: UILabel = {
+       let label = UILabel()
+        label.text = "Edit your video tag"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        return label
+    }()
+    
+    private let tagTextField: UITextField = {
+       let textField = CustomTextField(placeholder: "Enter tag")
+        return textField
+    }()
+    
+    private lazy var saveButton: CustomButton = {
+        let btn = CustomButton(viewModel: .init(title: "Save"))
+        btn.backgroundColor = #colorLiteral(red: 0.7818982904, green: 0.5797014751, blue: 0.9752335696, alpha: 1)
+        btn.addTarget(self, action: #selector(didTapSave), for: .touchUpInside)
+        return btn
+    }()
+
+    private let horizontalPadding: CGFloat = 15
+    private let index: Int
+    private var url: String
+    weak var delegate: EditVideoDelegate?
+    
+    init(video: Video, videoIndex: Int) {
+        self.index = videoIndex
+        self.url = video.videoUrl
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -25,23 +75,92 @@ final class EditVideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
+        loadVideoPlayerVC(url: url)
+        setupUI()
+    }
+    
+    func loadVideoPlayerVC(url: String) {
+        if let url = URL(string: url) {
+            self.videoPlayer = GenericVideoPlayerViewController(url: url)
+        }
+    }
+    
+    func setupUI() {
+        view.backgroundColor = .black
+        view.addSubview(backBtn)
+        view.addSubview(navTitleLabel)
+        if videoPlayer != nil {
+            add(videoPlayer!)
+        }
+        view.addSubview(emptyViewToAnchorVideoPlayer)
+        view.addSubview(descriptionLabel)
+        view.addSubview(tagTextField)
+        view.addSubview(saveButton)
         
-        controller.player = player.player
+        backBtn.centerY(
+            inView: navTitleLabel,
+            leftAnchor: view.leftAnchor,
+            paddingLeft: 15
+        )
         
-        Task{ await player.loadVideo(with: url) }
+        navTitleLabel.centerX(
+            inView: view,
+            topAnchor: view.safeAreaLayoutGuide.topAnchor,
+            paddingTop: 5
+        )
         
-        addChild(controller)
-        view.addSubview(controller.view)
+        if videoPlayer != nil {
+            videoPlayer!.view.anchor(
+                top: navTitleLabel.bottomAnchor,
+                left: view.leftAnchor,
+                right: view.rightAnchor,
+                paddingTop: 20,
+                paddingLeft: horizontalPadding,
+                paddingRight: horizontalPadding
+            )
+            videoPlayer?.view
+                .setHeight(300)
+        }
         
-        controller.view.frame = CGRect(x: 0,
-                                       y: 0,
-                                       width: view.bounds.size.width,
-                                       height: view.bounds.size.height)
+        descriptionLabel.anchor(
+            top: videoPlayer?.view.bottomAnchor,
+            left: view.leftAnchor,
+            right: view.rightAnchor,
+            paddingTop: 30,
+            paddingLeft: horizontalPadding,
+            paddingBottom: 5,
+            paddingRight: horizontalPadding
+        )
         
-        controller.view.clipsToBounds = true
+        tagTextField.anchor(
+            top: descriptionLabel.bottomAnchor,
+            left: view.leftAnchor,
+            right: view.rightAnchor,
+            paddingTop: 5,
+            paddingLeft: horizontalPadding,
+            paddingRight: horizontalPadding
+        )
+     
         
-        controller.view.layer.borderColor =  UIColor.white.cgColor
-        controller.view.layer.borderWidth = 2
-        controller.view.layer.cornerRadius = 10
+        saveButton.anchor(
+            left: view.leftAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            right: view.rightAnchor,
+            paddingBottom: 10
+        )
+    }
+    
+    @objc private func didTapBackBtn() {
+        dismissVC()
+    }
+    
+    @objc private func didTapSave() {
+        guard let text = tagTextField.text else { return }
+        delegate?.didSaved(tag: text, for: index)
+    }
+    
+    private func dismissVC() {
+        navigationController?.popViewController(animated: true)
     }
 }

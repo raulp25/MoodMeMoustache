@@ -18,14 +18,6 @@ final class VideoFeedViewController: UIViewController {
         return label
     }()
     
-    private let createVideoButtonLabel: UILabel = {
-       let label = UILabel()
-        label.text = "Record"
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        return label
-    }()
-    
     private lazy var createVideoButtonContainerUIView: UIView = {
         let uv = UIView()
         uv.layer.cornerRadius = 10
@@ -34,6 +26,14 @@ final class VideoFeedViewController: UIViewController {
         uv.isUserInteractionEnabled = true
         uv.addGestureRecognizer(tapGesture)
         return uv
+    }()
+    
+    private let createVideoButtonLabel: UILabel = {
+       let label = UILabel()
+        label.text = "Record"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        return label
     }()
     
     lazy private var createVideoButtonImageView: UIImageView = {
@@ -162,8 +162,9 @@ extension VideoFeedViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        
-        let vc = MockVC()
+        let video = viewModel.videos[indexPath.row]
+        let vc = EditVideoViewController(video: video, videoIndex: indexPath.row)
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -194,6 +195,8 @@ extension VideoFeedViewController: VideoFeedViewModelDelegate {
     }
 }
 
-extension VideoFeedViewModel {
-    
+extension VideoFeedViewController: EditVideoDelegate {
+    func didSaved(tag: String, for videoIndex: Int) {
+        
+    }
 }
