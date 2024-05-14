@@ -13,7 +13,7 @@ import Photos
 //AVAudioSession.sharedInstance().setActive(false, options: [])
 
 /// The delegate protocol
-public protocol ARCaptureDelegate: class {
+public protocol ARCaptureDelegate: AnyObject {
     
     /// captured frame handler
     func frame(frame: ARCaptureFrame)
@@ -301,10 +301,10 @@ open class ARCapture {
         switch audioPermissions {
         case .enabled, .disabled: callback()
         case .unknown:
-            AVAudioSession.sharedInstance().requestRecordPermission({ [weak self] status in
+            AVAudioApplication.requestRecordPermission { [weak self] status in
                 self?.audioPermissions = status ? .enabled : .disabled
                 callback()
-            })
+            }
         }
     }
 }

@@ -1,16 +1,11 @@
-//
-//  FinalPreViewViewController.swift
-//  VideoCameraCustom
-//
-//  Created by Raul Pena on 09/05/24.
-//
+//  MoodMeMoustaches
 
 import UIKit
 import AVKit
 import AVFoundation
 
 final class FinalPreViewViewController: UIViewController {
-    let viewModel = FinalPreViewViewModel()
+    let viewModel = FinalPreViewViewModel(service: VideoFeedService())
     let player = Player()
     
     private let dummyView = DummyView(hidesKeyBoardWhenTappedAround: true)
@@ -47,9 +42,8 @@ final class FinalPreViewViewController: UIViewController {
         return btn
     }()
     
-    let controller = AVPlayerViewController()
-    var url: URL
-    var showPreview: Bool = false
+    private let controller = AVPlayerViewController()
+    private var url: URL
     
     init(url: URL) {
         self.url = url
@@ -106,13 +100,14 @@ final class FinalPreViewViewController: UIViewController {
             paddingTop: 10,
             paddingRight: 15
         )
-        closeBtnBackgroundView.setDimensions(height: 40, width: 40)
+        closeBtnBackgroundView
+            .setDimensions(height: 40, width: 40)
         
         closeBtn.center(
             inView: closeBtnBackgroundView
         )
-        closeBtn.setDimensions(height: 20, width: 20)
-        
+        closeBtn
+            .setDimensions(height: 20, width: 20)
         
         nextButton.anchor(
             left: view.leftAnchor,
@@ -123,12 +118,10 @@ final class FinalPreViewViewController: UIViewController {
     }
     
     @objc private func didTapClose() {
-        print(": => did tap close")
         dismissVC()
     }
     
     @objc private func didTapNext() {
-        print(": =>upload tapped")
         showModal()
     }
     
@@ -153,7 +146,7 @@ final class FinalPreViewViewController: UIViewController {
     }
 }
 
-extension FinalPreViewViewController {
+private extension FinalPreViewViewController {
     func showModal() {
         let uploadVideoView = GenericModal(title: "Video tag",
                                          description: "Set your video tag",
@@ -166,13 +159,17 @@ extension FinalPreViewViewController {
         self.view.bringSubviewToFront(dummyView.view)
         dummyView.view.addSubview(uploadVideoView)
 
-        dummyView.view.fillSuperview()
+        dummyView.view
+            .fillSuperview()
         dummyView.view.alpha = 0
         dummyView.view.backgroundColor = .black.withAlphaComponent(0.3)
         
         uploadVideoView
             .center(inView: dummyView.view)
-        uploadVideoView.setDimensions(height: 290, width: view.frame.size.width / 1.3)
+        uploadVideoView.setDimensions(
+            height: 290,
+            width: view.frame.size.width / 1.3
+        )
         uploadVideoView.backgroundColor = .white
         uploadVideoView.layer.cornerRadius = 15
         

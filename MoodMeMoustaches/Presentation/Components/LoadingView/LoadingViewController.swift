@@ -1,9 +1,4 @@
-//
-//  LoadingViewController.swift
-//  pethug
-//
-//  Created by Raul Pena on 18/09/23.
-//
+//  MoodMeMoustaches
 
 import Foundation
 

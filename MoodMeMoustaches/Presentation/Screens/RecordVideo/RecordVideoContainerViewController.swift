@@ -1,19 +1,17 @@
-//
-//  RecordVideoContainerViewController.swift
-//  rs5
-//
-//  Created by Raul Pena on 10/05/24.
-//
+//  MoodMeMoustaches
 
 import UIKit
 
 final class RecordVideoContainerViewController: UIViewController {
     
-    let recordVideoVC = RecordVideoViewController()
+    private let recordVideoVC = RecordVideoViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
+    }
+    
+    private func setupUI() {
         add(recordVideoVC)
         
         recordVideoVC.view.anchor(
@@ -22,6 +20,5 @@ final class RecordVideoContainerViewController: UIViewController {
             bottom: view.safeAreaLayoutGuide.bottomAnchor,
             right: view.rightAnchor
         )
-        
     }
 }

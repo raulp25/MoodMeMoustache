@@ -36,13 +36,8 @@
 		C40310C32BF3283100E469C0 /* ChildTabCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310972BF3283100E469C0 /* ChildTabCoordinatorProtocol.swift */; };
 		C40310C42BF3283100E469C0 /* HomeTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310982BF3283100E469C0 /* HomeTabCoordinator.swift */; };
 		C40310C52BF3283100E469C0 /* NavCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C403109A2BF3283100E469C0 /* NavCoordinatorProtocol.swift */; };
-		C40310C62BF3283100E469C0 /* RocketListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C403109D2BF3283100E469C0 /* RocketListCell.swift */; };
 		C40310C72BF3283100E469C0 /* MoustachesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C403109F2BF3283100E469C0 /* MoustachesCollectionViewCell.swift */; };
 		C40310C92BF3283100E469C0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310A12BF3283100E469C0 /* SpinnerView.swift */; };
-		C40310CA2BF3283100E469C0 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310A52BF3283100E469C0 /* ViewModel.swift */; };
-		C40310CB2BF3283100E469C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310A62BF3283100E469C0 /* HomeViewController.swift */; };
-		C40310CC2BF3283100E469C0 /* RocketListWithCollectionViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310A72BF3283100E469C0 /* RocketListWithCollectionViewViewController.swift */; };
-		C40310CD2BF3283100E469C0 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310A92BF3283100E469C0 /* MainTabBarController.swift */; };
 		C40310CE2BF3283100E469C0 /* RecordVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310AC2BF3283100E469C0 /* RecordVideoViewModel.swift */; };
 		C40310CF2BF3283100E469C0 /* RecordVideoContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310AD2BF3283100E469C0 /* RecordVideoContainerViewController.swift */; };
 		C40310D02BF3283100E469C0 /* RecordVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310AE2BF3283100E469C0 /* RecordVideoController.swift */; };
@@ -52,7 +47,7 @@
 		C40310D42BF3283100E469C0 /* CustomButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310B72BF3283100E469C0 /* CustomButton+ViewModel.swift */; };
 		C40310D52BF3283100E469C0 /* UICollectionView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310B92BF3283100E469C0 /* UICollectionView+Factory.swift */; };
 		C40310D62BF3283100E469C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310BA2BF3283100E469C0 /* SceneDelegate.swift */; };
-		C40310E72BF3285B00E469C0 /* RocketListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310E32BF3285B00E469C0 /* RocketListService.swift */; };
+		C40310E72BF3285B00E469C0 /* VideoFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310E32BF3285B00E469C0 /* VideoFeedService.swift */; };
 		C40310E82BF3285B00E469C0 /* VideoUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310E42BF3285B00E469C0 /* VideoUploader.swift */; };
 		C40310EE2BF3286A00E469C0 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310EB2BF3286A00E469C0 /* UIViewController+Extensions.swift */; };
 		C40310EF2BF3286A00E469C0 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310EC2BF3286A00E469C0 /* UIView+Extensions.swift */; };
@@ -63,6 +58,8 @@
 		C42E50952BF40DD5009CF01D /* MockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E50942BF40DD5009CF01D /* MockViewController.swift */; };
 		C42E50982BF40E23009CF01D /* MockTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E50972BF40E23009CF01D /* MockTabCoordinator.swift */; };
 		C42E509A2BF413DC009CF01D /* CreateThumbnailFromVideoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E50992BF413DC009CF01D /* CreateThumbnailFromVideoOperation.swift */; };
+		C42E509D2BF41BD5009CF01D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E509C2BF41BD5009CF01D /* MainTabBarController.swift */; };
+		C42E509F2BF41FA8009CF01D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E509E2BF41FA8009CF01D /* Constants.swift */; };
 		C45D75E12BF32AF6005EF17A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45D75E02BF32AF6005EF17A /* Player.swift */; };
 		C48EFE7D2BF330A300DAAF06 /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48EFE7C2BF330A300DAAF06 /* DurationFormatter.swift */; };
 		C4C2FE492BF3A6C400294E31 /* UIButton+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2FE482BF3A6C400294E31 /* UIButton+Factory.swift */; };
@@ -139,13 +136,8 @@
 		C40310972BF3283100E469C0 /* ChildTabCoordinatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChildTabCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		C40310982BF3283100E469C0 /* HomeTabCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabCoordinator.swift; sourceTree = "<group>"; };
 		C403109A2BF3283100E469C0 /* NavCoordinatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavCoordinatorProtocol.swift; sourceTree = "<group>"; };
-		C403109D2BF3283100E469C0 /* RocketListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RocketListCell.swift; sourceTree = "<group>"; };
 		C403109F2BF3283100E469C0 /* MoustachesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoustachesCollectionViewCell.swift; sourceTree = "<group>"; };
 		C40310A12BF3283100E469C0 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
-		C40310A52BF3283100E469C0 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		C40310A62BF3283100E469C0 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		C40310A72BF3283100E469C0 /* RocketListWithCollectionViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RocketListWithCollectionViewViewController.swift; sourceTree = "<group>"; };
-		C40310A92BF3283100E469C0 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C40310AC2BF3283100E469C0 /* RecordVideoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideoViewModel.swift; sourceTree = "<group>"; };
 		C40310AD2BF3283100E469C0 /* RecordVideoContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideoContainerViewController.swift; sourceTree = "<group>"; };
 		C40310AE2BF3283100E469C0 /* RecordVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideoController.swift; sourceTree = "<group>"; };
@@ -155,7 +147,7 @@
 		C40310B72BF3283100E469C0 /* CustomButton+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomButton+ViewModel.swift"; sourceTree = "<group>"; };
 		C40310B92BF3283100E469C0 /* UICollectionView+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Factory.swift"; sourceTree = "<group>"; };
 		C40310BA2BF3283100E469C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C40310E32BF3285B00E469C0 /* RocketListService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RocketListService.swift; sourceTree = "<group>"; };
+		C40310E32BF3285B00E469C0 /* VideoFeedService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFeedService.swift; sourceTree = "<group>"; };
 		C40310E42BF3285B00E469C0 /* VideoUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploader.swift; sourceTree = "<group>"; };
 		C40310EB2BF3286A00E469C0 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		C40310EC2BF3286A00E469C0 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -166,6 +158,8 @@
 		C42E50942BF40DD5009CF01D /* MockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewController.swift; sourceTree = "<group>"; };
 		C42E50972BF40E23009CF01D /* MockTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTabCoordinator.swift; sourceTree = "<group>"; };
 		C42E50992BF413DC009CF01D /* CreateThumbnailFromVideoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateThumbnailFromVideoOperation.swift; sourceTree = "<group>"; };
+		C42E509C2BF41BD5009CF01D /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		C42E509E2BF41FA8009CF01D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C45D75E02BF32AF6005EF17A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C48EFE7C2BF330A300DAAF06 /* DurationFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationFormatter.swift; sourceTree = "<group>"; };
 		C4C2FE482BF3A6C400294E31 /* UIButton+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Factory.swift"; sourceTree = "<group>"; };
@@ -304,6 +298,7 @@
 		C403108A2BF3283100E469C0 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C42E50A02BF42187009CF01D /* Core */,
 				C40310B42BF3283100E469C0 /* Components */,
 				C4C2FE4A2BF3A6EE00294E31 /* DummyView.swift */,
 				C40310A12BF3283100E469C0 /* SpinnerView.swift */,
@@ -375,18 +370,9 @@
 		C403109B2BF3283100E469C0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C403109C2BF3283100E469C0 /* TableView */,
 				C403109E2BF3283100E469C0 /* CollectionView */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		C403109C2BF3283100E469C0 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				C403109D2BF3283100E469C0 /* RocketListCell.swift */,
-			);
-			path = TableView;
 			sourceTree = "<group>";
 		};
 		C403109E2BF3283100E469C0 /* CollectionView */ = {
@@ -404,37 +390,9 @@
 				C4C2FEA22BF3CEAF00294E31 /* EditVideo */,
 				C40310B02BF3283100E469C0 /* FinalPrieview */,
 				C4C2FE9A2BF3BAAC00294E31 /* Home */,
-				C40310A32BF3283100E469C0 /* Home2 */,
-				C40310A82BF3283100E469C0 /* Core */,
 				C40310AA2BF3283100E469C0 /* RecordVideo */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		C40310A32BF3283100E469C0 /* Home2 */ = {
-			isa = PBXGroup;
-			children = (
-				C40310A42BF3283100E469C0 /* ViewModel */,
-				C40310A62BF3283100E469C0 /* HomeViewController.swift */,
-				C40310A72BF3283100E469C0 /* RocketListWithCollectionViewViewController.swift */,
-			);
-			path = Home2;
-			sourceTree = "<group>";
-		};
-		C40310A42BF3283100E469C0 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C40310A52BF3283100E469C0 /* ViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		C40310A82BF3283100E469C0 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				C40310A92BF3283100E469C0 /* MainTabBarController.swift */,
-			);
-			path = Core;
 			sourceTree = "<group>";
 		};
 		C40310AA2BF3283100E469C0 /* RecordVideo */ = {
@@ -524,17 +482,17 @@
 			isa = PBXGroup;
 			children = (
 				C42E509B2BF4158F009CF01D /* VideoUploader */,
-				C40310E02BF3285B00E469C0 /* RocketListService */,
+				C40310E02BF3285B00E469C0 /* VideoFeedService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		C40310E02BF3285B00E469C0 /* RocketListService */ = {
+		C40310E02BF3285B00E469C0 /* VideoFeedService */ = {
 			isa = PBXGroup;
 			children = (
-				C40310E32BF3285B00E469C0 /* RocketListService.swift */,
+				C40310E32BF3285B00E469C0 /* VideoFeedService.swift */,
 			);
-			path = RocketListService;
+			path = VideoFeedService;
 			sourceTree = "<group>";
 		};
 		C40310E92BF3286A00E469C0 /* Core */ = {
@@ -590,6 +548,14 @@
 			path = VideoUploader;
 			sourceTree = "<group>";
 		};
+		C42E50A02BF42187009CF01D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C42E509C2BF41BD5009CF01D /* MainTabBarController.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		C45D75DF2BF32A8C005EF17A /* Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -604,6 +570,7 @@
 				C48EFE7C2BF330A300DAAF06 /* DurationFormatter.swift */,
 				C42E50912BF40A40009CF01D /* RemoveFileFromTempFolder.swift */,
 				C42E50992BF413DC009CF01D /* CreateThumbnailFromVideoOperation.swift */,
+				C42E509E2BF41FA8009CF01D /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -804,18 +771,17 @@
 				C40310762BF3278000E469C0 /* ARCapture-dummy.m in Sources */,
 				C4C2FE992BF3B7B600294E31 /* ValidationState.swift in Sources */,
 				C42E50952BF40DD5009CF01D /* MockViewController.swift in Sources */,
+				C42E509D2BF41BD5009CF01D /* MainTabBarController.swift in Sources */,
 				C40310EE2BF3286A00E469C0 /* UIViewController+Extensions.swift in Sources */,
 				C40310D32BF3283100E469C0 /* CustomButton.swift in Sources */,
 				C40310D52BF3283100E469C0 /* UICollectionView+Factory.swift in Sources */,
 				C40310C02BF3283100E469C0 /* InAppCoordinator+TabBar.swift in Sources */,
 				C40310CF2BF3283100E469C0 /* RecordVideoContainerViewController.swift in Sources */,
 				C40310E82BF3285B00E469C0 /* VideoUploader.swift in Sources */,
-				C40310CB2BF3283100E469C0 /* HomeViewController.swift in Sources */,
-				C40310E72BF3285B00E469C0 /* RocketListService.swift in Sources */,
-				C40310CD2BF3283100E469C0 /* MainTabBarController.swift in Sources */,
+				C40310E72BF3285B00E469C0 /* VideoFeedService.swift in Sources */,
 				C4C2FEA72BF3D12500294E31 /* GenericVideoPlayerViewController.swift in Sources */,
 				C42E50982BF40E23009CF01D /* MockTabCoordinator.swift in Sources */,
-				C40310C62BF3283100E469C0 /* RocketListCell.swift in Sources */,
+				C42E509F2BF41FA8009CF01D /* Constants.swift in Sources */,
 				C4C2FE4E2BF3A6FE00294E31 /* GenericModal.swift in Sources */,
 				C4C2FEA42BF3CEBC00294E31 /* EditVideoViewController.swift in Sources */,
 				C40310C22BF3283100E469C0 /* RecordVideoTabCoordinator.swift in Sources */,
@@ -824,11 +790,9 @@
 				C40310EF2BF3286A00E469C0 /* UIView+Extensions.swift in Sources */,
 				C40310692BF3277100E469C0 /* ARCapture.swift in Sources */,
 				C4C2FE952BF3B7B600294E31 /* Validator.swift in Sources */,
-				C40310CC2BF3283100E469C0 /* RocketListWithCollectionViewViewController.swift in Sources */,
 				C4C2FE9C2BF3BAF600294E31 /* VideoFeedViewController.swift in Sources */,
 				C40310BF2BF3283100E469C0 /* StateCoordinatorProtocol.swift in Sources */,
 				C40310C92BF3283100E469C0 /* SpinnerView.swift in Sources */,
-				C40310CA2BF3283100E469C0 /* ViewModel.swift in Sources */,
 				C4C2FEA12BF3C16D00294E31 /* VideoFeedCollectionViewCell.swift in Sources */,
 				C40310D42BF3283100E469C0 /* CustomButton+ViewModel.swift in Sources */,
 				C40310BE2BF3283100E469C0 /* CoordinatorProtocol.swift in Sources */,

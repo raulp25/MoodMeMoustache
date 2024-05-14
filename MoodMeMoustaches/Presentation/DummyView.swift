@@ -1,9 +1,4 @@
-//
-//  DummyView.swift
-//  pethug
-//
-//  Created by Raul Pena on 16/09/23.
-//
+//  MoodMeMoustaches
 
 import UIKit
 

@@ -22,7 +22,6 @@ final class Player {
         addItemDurationPublisher()
     }
     
-    
     func loadVideo(with url: URL) async {
         defer { isLoadingVideo = false }
         isLoadingVideo = true
@@ -34,7 +33,6 @@ final class Player {
             self?.player.play()
         }
     }
-    
     
     private func loadPlayerItem(_ videoURL: URL) async {
         
@@ -50,7 +48,6 @@ final class Player {
         
     }
     
-    
     private func addItemDurationPublisher() {
         player
             .publisher(for: \.currentItem?.duration)
@@ -61,8 +58,8 @@ final class Player {
                 else { return }
                 self.itemDuration = newStatus.seconds
                 isLoadingVideo = false
-            }
-            ).store(in: &subscriptions)
+            })
+            .store(in: &subscriptions)
     }
     
 }

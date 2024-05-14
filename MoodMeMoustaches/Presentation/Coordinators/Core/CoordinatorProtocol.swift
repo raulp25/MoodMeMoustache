@@ -1,9 +1,4 @@
-//
-//  CoordinatorContract.swift
-//  pethug
-//
-//  Created by Raul Pena on 13/09/23.
-//
+//  MoodMeMoustaches
 
 import UIKit
 

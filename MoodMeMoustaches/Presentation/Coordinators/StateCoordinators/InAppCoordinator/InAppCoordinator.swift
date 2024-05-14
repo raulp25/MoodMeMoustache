@@ -1,9 +1,4 @@
-//
-//  InAppCoordinator.swift
-//  pethug
-//
-//  Created by Raul Pena on 16/09/23.
-//
+//  MoodMeMoustaches
 
 import Combine
 import UIKit
@@ -14,7 +9,6 @@ final class InAppCoordinator: StateCoordinator, ChildControllerManagable {
     weak var parentCoordinator: ApplicationCoordinator?
 
     let rootViewController = MainTabBarController()
-    
     
     // MARK: - start
     func start() {
@@ -53,7 +47,9 @@ final class InAppCoordinator: StateCoordinator, ChildControllerManagable {
     }
 
     private func setUpTabBarComponents(for tab: TabBar, with vc: UIViewController) {
-        vc.tabBarItem = .init(title: tab.rawValue, image: UIImage(systemName: tab.imageName), selectedImage: UIImage(systemName: tab.imageName))
+        vc.tabBarItem = .init(title: tab.rawValue, 
+                              image: UIImage(systemName: tab.imageName),
+                              selectedImage: UIImage(systemName: tab.imageName))
         vc.tabBarItem.tag = tab.tag
     }
 

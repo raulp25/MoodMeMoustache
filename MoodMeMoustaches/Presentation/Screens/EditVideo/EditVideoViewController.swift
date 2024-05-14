@@ -34,12 +34,6 @@ final class EditVideoViewController: UIViewController {
         return label
     }()
     
-    // Needed to let videoPlayer Frame adjust correctly and appear on screen
-    private let emptyViewToAnchorVideoPlayer: UIView = {
-       let uv = UIView()
-        return uv
-    }()
-    
     private let descriptionLabel: UILabel = {
        let label = UILabel()
         label.text = "Edit your video tag"
@@ -82,20 +76,19 @@ final class EditVideoViewController: UIViewController {
         setupUI()
     }
     
-    func loadVideoPlayerVC(url: String) {
+    private func loadVideoPlayerVC(url: String) {
         if let url = URL(string: url) {
             self.videoPlayer = GenericVideoPlayerViewController(url: url)
         }
     }
     
-    func setupUI() {
+    private func setupUI() {
         view.backgroundColor = .black
         view.addSubview(backBtn)
         view.addSubview(navTitleLabel)
         if videoPlayer != nil {
             add(videoPlayer!)
         }
-        view.addSubview(emptyViewToAnchorVideoPlayer)
         view.addSubview(descriptionLabel)
         view.addSubview(tagTextField)
         view.addSubview(saveButton)

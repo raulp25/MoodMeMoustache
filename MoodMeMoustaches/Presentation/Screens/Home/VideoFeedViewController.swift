@@ -8,7 +8,7 @@
 import UIKit
 
 final class VideoFeedViewController: UIViewController {
-    private let viewModel = VideoFeedViewModel()
+    private let viewModel = VideoFeedViewModel(service: VideoFeedService())
     private let loadingView = LoadingViewController(spinnerColors: [#colorLiteral(red: 0.7818982904, green: 0.5797014751, blue: 0.9752335696, alpha: 1)])
     
     private let navTitleLabel: UILabel = {
@@ -104,7 +104,8 @@ final class VideoFeedViewController: UIViewController {
             right: view.rightAnchor,
             paddingRight: horizontalPadding
         )
-        createVideoButtonContainerUIView.setDimensions(height: 30, width: 95)
+        createVideoButtonContainerUIView
+            .setDimensions(height: 30, width: 95)
         
         createVideoButtonLabel.anchor(
             top: createVideoButtonContainerUIView.topAnchor,
@@ -136,7 +137,7 @@ final class VideoFeedViewController: UIViewController {
         collectionView.refreshControl = refresher
     }
     
-    func setupDelegates() {
+    private func setupDelegates() {
         viewModel.delegate = self
     }
     
@@ -187,7 +188,9 @@ extension VideoFeedViewController: UICollectionViewDelegate, UICollectionViewDat
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let video = viewModel.videos[indexPath.row]
-        let vc = EditVideoViewController(viewModel: EditVideoViewModel(video: video, videoIndex: indexPath.row))
+        let vc = EditVideoViewController(viewModel: EditVideoViewModel(video: video, 
+                                                                       videoIndex: indexPath.row,
+                                                                       service: VideoFeedService()))
         vc.delegate = self
         
         navigationController?.pushViewController(vc, animated: true)

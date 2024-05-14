@@ -22,20 +22,22 @@ final class VideoFeedViewModel {
         }
     }
     
+    private let service: VideoFeedService
+    
     var isLoading = false
     
     weak var delegate: VideoFeedViewModelDelegate?
     
-    init() {
-        
+    init(service: VideoFeedService) {
+        self.service = service
     }
     
     func getAllVideos() async {
         defer { isLoading = false }
         isLoading = true
+        
         do {
-            let snapshot = try await Firestore.firestore().collection("videos").getDocuments()
-            self.videos = snapshot.documents.compactMap({ try? $0.data(as: Video.self) })
+            self.videos = try await service.getAllVideos()
         } catch {
             print("DEBUG: error getAllVideos() => \(error)")
         }

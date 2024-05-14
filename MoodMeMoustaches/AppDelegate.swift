@@ -1,9 +1,4 @@
-//
-//  AppDelegate.swift
-//  rs5
-//
-//  Created by Raul Pena on 22/04/24.
-//
+//  MoodMeMoustaches
 
 import UIKit
 import SDWebImage

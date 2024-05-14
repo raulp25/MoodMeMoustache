@@ -1,9 +1,4 @@
-//
-//  UICollectionView+Factory.swift
-//  pethug
-//
-//  Created by Raul Pena on 19/09/23.
-//
+//  MoodMeMoustaches
 
 import UIKit
 

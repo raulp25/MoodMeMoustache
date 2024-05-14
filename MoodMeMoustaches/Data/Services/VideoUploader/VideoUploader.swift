@@ -1,9 +1,4 @@
-//
-//  VideoUploader.swift
-//  rs5
-//
-//  Created by Raul Pena on 12/05/24.
-//
+//  MoodMeMoustaches
 
 import Foundation
 import FirebaseStorage

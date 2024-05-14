@@ -5,8 +5,6 @@
 //  Created by Raul Pena on 14/05/24.
 //
 
-import Foundation
-
 import UIKit
 
 final class MockTabCoordinator: NSObject, ChildTabCoordinator {

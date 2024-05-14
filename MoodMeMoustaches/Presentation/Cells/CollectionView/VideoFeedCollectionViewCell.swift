@@ -56,6 +56,8 @@ class VideoFeedCollectionViewCell: UICollectionViewCell {
     private let paddingLeft: CGFloat = 15
     private let paddingRight: CGFloat = 20
     
+    private let horizontalPadding: CGFloat = 7
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -105,8 +107,8 @@ class VideoFeedCollectionViewCell: UICollectionViewCell {
         videoTagImage.anchor(
             top: contentView.topAnchor,
             right: contentView.rightAnchor,
-            paddingTop: 7,
-            paddingRight: 7
+            paddingTop: horizontalPadding,
+            paddingRight: horizontalPadding
         )
         videoTagImage
             .setDimensions(height: 22, width: 22)
@@ -122,8 +124,8 @@ class VideoFeedCollectionViewCell: UICollectionViewCell {
             left: contentView.leftAnchor,
             bottom: contentView.bottomAnchor,
             right: contentView.rightAnchor,
-            paddingLeft: 7,
-            paddingBottom: 7
+            paddingLeft: horizontalPadding,
+            paddingBottom: horizontalPadding
         )
     }
     

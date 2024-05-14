@@ -1,9 +1,4 @@
-//
-//  DurationFormatter.swift
-//  SportsWatch
-//
-//  Created by Raul Pena on 11/02/24.
-//
+//  MoodMeMoustaches
 
 import Foundation
 

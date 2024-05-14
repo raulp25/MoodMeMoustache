@@ -8,26 +8,24 @@
 import Foundation
 import FirebaseFirestore
 
-class EditVideoViewModel {
+final class EditVideoViewModel {
+    
+    private var service: VideoFeedService
     
     let video: Video
     let videoIndex: Int
     
-    init(video: Video, videoIndex: Int) {
+    init(video: Video, videoIndex: Int, service: VideoFeedService) {
         self.video = video
         self.videoIndex = videoIndex
+        self.service = service
     }
     
     func update(tag: String, video: Video) async {
         let tag = tag.trimWhiteSpaces()
         
         do {
-            let data = [
-                "tag": tag
-            ] as [String: Any]
-            guard let id = video.id else { return }
-            try await Firestore.firestore().collection("videos").document(id).updateData(data)
-            print("DEBUG: uplaoding video finished =>")
+            try await service.update(tag: tag, video: video)
         } catch {
             print("DEBUG: error uploading video uploadVideo() => \(error.localizedDescription)")
         }

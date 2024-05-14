@@ -1,9 +1,4 @@
-//
-//  MoustachesCollectionViewCell.swift
-//  rs5
-//
-//  Created by Raul Pena on 12/05/24.
-//
+//  MoodMeMoustaches
 
 import UIKit
 
@@ -35,10 +30,6 @@ class MoustachesCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         moustacheImageView.image = nil
-    }
-    
-    deinit {
-        // nothing to clean
     }
     
     func setupUI() {

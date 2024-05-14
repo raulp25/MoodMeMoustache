@@ -1,16 +1,11 @@
-//
-//  RecordVideoViewModel.swift
-//  rs5
-//
-//  Created by Raul Pena on 10/05/24.
-//
+//  MoodMeMoustaches
 
 import UIKit
 import SwiftUI
 import ARKit
 
 
-class RecordVideoViewModel {
+final class RecordVideoViewModel {
     let planeWidth: CGFloat = 0.13
     let planeHeight: CGFloat = 0.06
     let nodeYPosition: Float =  -0.022999994
