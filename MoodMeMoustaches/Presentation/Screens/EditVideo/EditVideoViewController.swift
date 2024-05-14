@@ -14,7 +14,9 @@ protocol EditVideoDelegate: NSObject {
 
 
 final class EditVideoViewController: UIViewController {
-    let player = Player()
+    private let viewModel: EditVideoViewModel
+    
+    private let player = Player()
     
     private var videoPlayer: GenericVideoPlayerViewController?
     
@@ -59,13 +61,13 @@ final class EditVideoViewController: UIViewController {
     }()
 
     private let horizontalPadding: CGFloat = 15
-    private let index: Int
     private var url: String
     weak var delegate: EditVideoDelegate?
     
-    init(video: Video, videoIndex: Int) {
-        self.index = videoIndex
-        self.url = video.videoUrl
+    init(viewModel: EditVideoViewModel) {
+        self.viewModel = viewModel
+        self.url = viewModel.video.videoUrl
+        self.tagTextField.text = viewModel.video.tag
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -157,7 +159,14 @@ final class EditVideoViewController: UIViewController {
     
     @objc private func didTapSave() {
         guard let text = tagTextField.text else { return }
-        delegate?.didSaved(tag: text, for: index)
+        Task {
+            await viewModel.update(tag: text, video: viewModel.video)
+            DispatchQueue.main.async { [weak self] in
+                guard let videoIndex = self?.viewModel.videoIndex else { return }
+                self?.delegate?.didSaved(tag: text, for: videoIndex)
+                self?.dismissVC()
+            }
+        }
     }
     
     private func dismissVC() {

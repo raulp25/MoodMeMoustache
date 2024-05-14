@@ -14,18 +14,30 @@ final class FinalPreViewViewController: UIViewController {
     let player = Player()
     
     private let dummyView = DummyView(hidesKeyBoardWhenTappedAround: true)
+    private let loadingView = LoadingViewController(spinnerColors: [#colorLiteral(red: 0.7818982904, green: 0.5797014751, blue: 0.9752335696, alpha: 1)])
     
-    lazy private var closeButton: UIImageView = {
+    lazy private var closeBtn: UIImageView = {
        let iv = UIImageView()
         iv.clipsToBounds = true
-        iv.contentMode = .scaleAspectFill
-        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFit
         iv.tintColor = .white
         iv.image = UIImage(systemName: "xmark")
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapClose))
         iv.isUserInteractionEnabled = true
         iv.addGestureRecognizer(tapGesture)
         return iv
+    }()
+    
+    private lazy var closeBtnBackgroundView: UIView = {
+        let uv = UIView()
+        uv.backgroundColor = .black
+        uv.layer.cornerRadius = 20
+        uv.layer.borderColor = UIColor.black.withAlphaComponent(0.8) .cgColor
+        uv.layer.borderWidth = 1.2
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapClose))
+        uv.isUserInteractionEnabled = true
+        uv.addGestureRecognizer(tapGesture)
+        return uv
     }()
     
     private lazy var nextButton: CustomButton = {
@@ -38,6 +50,7 @@ final class FinalPreViewViewController: UIViewController {
     let controller = AVPlayerViewController()
     var url: URL
     var showPreview: Bool = false
+    
     init(url: URL) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
@@ -47,8 +60,18 @@ final class FinalPreViewViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // Remove the recorded video url that was stored in a temp directory
+        // since we don't need it anymore at this point
+        removeFileFromTempFolder(url: url)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .black
         
         controller.player = player.player
         
@@ -56,7 +79,8 @@ final class FinalPreViewViewController: UIViewController {
         
         addChild(controller)
         view.addSubview(controller.view)
-        view.addSubview(closeButton)
+        view.addSubview(closeBtnBackgroundView)
+        closeBtnBackgroundView.addSubview(closeBtn)
         view.addSubview(nextButton)
         
 
@@ -75,13 +99,20 @@ final class FinalPreViewViewController: UIViewController {
         controller.view.layer.borderWidth = 2
         controller.view.layer.cornerRadius = 10
         
-        closeButton.anchor(
+        
+        closeBtnBackgroundView.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
             right: view.rightAnchor,
             paddingTop: 10,
             paddingRight: 15
         )
-        closeButton.setDimensions(height: 35, width: 35)
+        closeBtnBackgroundView.setDimensions(height: 40, width: 40)
+        
+        closeBtn.center(
+            inView: closeBtnBackgroundView
+        )
+        closeBtn.setDimensions(height: 20, width: 20)
+        
         
         nextButton.anchor(
             left: view.leftAnchor,
@@ -89,11 +120,6 @@ final class FinalPreViewViewController: UIViewController {
             right: view.rightAnchor,
             paddingBottom: 15
         )
-    }
-        
-    
-    private func dismissVC() {
-        navigationController?.popViewController(animated: true)
     }
     
     @objc private func didTapClose() {
@@ -106,6 +132,25 @@ final class FinalPreViewViewController: UIViewController {
         showModal()
     }
     
+    
+    private func dismissVC() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func setLoadingScreen() {
+        view.isUserInteractionEnabled = false
+        
+        add(loadingView)
+        view.bringSubviewToFront(loadingView.view)
+        loadingView.view.fillSuperview()
+        loadingView.view.backgroundColor = .clear
+    }
+    
+    private func removeLoadingScreen() {
+        view.isUserInteractionEnabled = true
+        
+        loadingView.remove()
+    }
 }
 
 extension FinalPreViewViewController {
@@ -156,9 +201,12 @@ extension FinalPreViewViewController: GenericModalDelegate {
     }
     
     func didTapRightBtn() {
+        dismissModal()
+        setLoadingScreen()
         Task {
             await viewModel.uploadVideo(url: url, duration: player.itemDuration, tag: viewModel.tag)
             DispatchQueue.main.async { [weak self] in
+                self?.removeLoadingScreen()
                 self?.dismissVC()
             }
         }

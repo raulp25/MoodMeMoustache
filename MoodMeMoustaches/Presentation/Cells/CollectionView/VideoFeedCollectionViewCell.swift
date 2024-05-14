@@ -19,6 +19,15 @@ class VideoFeedCollectionViewCell: UICollectionViewCell {
         return iv
     }()
     
+    lazy private var videoTagImage: UIImageView = {
+       let iv = UIImageView()
+        iv.clipsToBounds = true
+        iv.contentMode = .scaleAspectFit
+        iv.tintColor = .white
+        iv.image = UIImage(systemName: "timelapse")
+        return iv
+    }()
+    
     private let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
     
     private let videoDurationLabel: UILabel = {
@@ -39,6 +48,8 @@ class VideoFeedCollectionViewCell: UICollectionViewCell {
         label.lineBreakMode = .byTruncatingTail
         return label
     }()
+    
+    private var thumbnailOperation: ThumbnailOperation?
     
     private let paddingTop: CGFloat = 0
     private let paddingBottom: CGFloat = 15
@@ -74,6 +85,7 @@ class VideoFeedCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 10
         
         contentView.addSubview(videoThumbnailImageView)
+        contentView.addSubview(videoTagImage)
         contentView.addSubview(videoDurationLabel)
         contentView.addSubview(videoTagLabel)
         videoThumbnailImageView.addSubview(activityIndicator)
@@ -89,6 +101,15 @@ class VideoFeedCollectionViewCell: UICollectionViewCell {
         
         activityIndicator
             .center(inView: videoThumbnailImageView)
+        
+        videoTagImage.anchor(
+            top: contentView.topAnchor,
+            right: contentView.rightAnchor,
+            paddingTop: 7,
+            paddingRight: 7
+        )
+        videoTagImage
+            .setDimensions(height: 22, width: 22)
         
         videoDurationLabel.anchor(
             bottom: videoThumbnailImageView.bottomAnchor,
@@ -129,71 +150,5 @@ class VideoFeedCollectionViewCell: UICollectionViewCell {
         
         OperationQueue().addOperation(thumbnailOperation!)
     }
-    
-    
-    private func getThumnailFromVideo(url: URL, completion: @escaping ((_ image: UIImage?)-> Void)) {
-        DispatchQueue.global().async {
-            let asset = AVAsset(url: url)
-            let avAssetImageGenerator = AVAssetImageGenerator(asset: asset)
-            avAssetImageGenerator.appliesPreferredTrackTransform = true
-            
-            let thumbnailTime = CMTimeMake(value: 7, timescale: 1)
-            
-            do {
-                
-                let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumbnailTime, actualTime: nil)
-                let thumbImage = UIImage(cgImage: cgThumbImage)
-                
-                DispatchQueue.main.async {
-                    completion(thumbImage)
-                }
-                
-            } catch {
-                print("DEBUG: error creating video thumbnail image getThumnailFromVideo() => \(error.localizedDescription)")
-            }
-            
-        }
-    }
-    
-    var thumbnailOperation: ThumbnailOperation?
 
 }
-
-
-class ThumbnailOperation: Operation {
-    var url: URL
-    var completion: ((UIImage?) -> Void)?
-    
-    init(url: URL, completion: @escaping ((UIImage?) -> Void)) {
-        self.url = url
-        self.completion = completion
-    }
-    
-    override func main() {
-        let asset = AVAsset(url: url)
-        let avAssetImageGenerator = AVAssetImageGenerator(asset: asset)
-        avAssetImageGenerator.appliesPreferredTrackTransform = true
-        
-        let thumnailTime = CMTimeMake(value: 2, timescale: 1)
-        
-        do {
-            let cgThumbImage = try avAssetImageGenerator.copyCGImage(at: thumnailTime, actualTime: nil)
-            let thumbnailImage = UIImage(cgImage: cgThumbImage)
-            
-            DispatchQueue.main.async {
-                if !self.isCancelled {
-                    self.completion?(thumbnailImage)
-                }
-            }
-        } catch {
-            print("DEBUG: error getThumbnailFromVideo() => \(error.localizedDescription)")
-            DispatchQueue.main.async {
-                if !self.isCancelled {
-                    self.completion?(nil)
-                }
-            }
-        }
-    }
-}
-
-

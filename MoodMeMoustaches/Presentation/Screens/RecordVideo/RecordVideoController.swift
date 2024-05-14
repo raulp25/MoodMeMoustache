@@ -15,6 +15,7 @@ class RecordVideoViewController: UIViewController {
     
     private let viewModel = RecordVideoViewModel()
     private lazy var collectionView: UICollectionView = .createDefaultCollectionView(layout: createLayout())
+    private let loadingViews = LoadingViewController(spinnerColors: [#colorLiteral(red: 0.7818982904, green: 0.5797014751, blue: 0.9752335696, alpha: 1)])
     
     private var sceneView = ARSCNView()
     private var capture: ARCapture?
@@ -22,6 +23,12 @@ class RecordVideoViewController: UIViewController {
 //    var recorder: RecordAR?
     private let glassesPlane: SCNPlane
     private let glassesNode: SCNNode
+    
+    private let loadingView: UIView = {
+        let uv = UIView()
+        uv.backgroundColor = .black
+        return uv
+    }()
     
     lazy private var shutterButton: UIImageView = {
        let iv = UIImageView()
@@ -47,6 +54,10 @@ class RecordVideoViewController: UIViewController {
         return uv
     }()
     
+    private var selectedIdx: Int? = nil
+    private var loadingViewFirstTimeAppearing = true
+    private var height: CGFloat = 0
+    private var isButtonEnabled = false
     init() {
         self.glassesPlane = SCNPlane(width: viewModel.planeWidth, height: viewModel.planeHeight)
         self.glassesNode = SCNNode()
@@ -71,10 +82,51 @@ class RecordVideoViewController: UIViewController {
         sceneView.session.run(configuration)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            self?.isButtonEnabled = true
+        }
+        if selectedIdx == nil {
+            scrollCollectionViewTo(index: 3)
+        } else if let selectedIdx {
+            scrollCollectionViewTo(index: selectedIdx)
+        }
+        
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 //        recorder?.rest()
         sceneView.session.pause()
+        
+//        view.addSubview(loadingView)
+//        view.sendSubviewToBack(loadingView)
+//        loadingView.frame = CGRect(x: 0,
+//                                    y: 0,
+//                                    width: view.frame.size.width,
+//                                    height: height)
+//        
+//        loadingView.layer.borderColor =  UIColor.white.cgColor
+//        loadingView.layer.borderWidth = 2
+//        loadingView.layer.cornerRadius = 10
+
+            isButtonEnabled = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+//        view.addSubview(loadingView)
+////        view.sendSubviewToBack(loadingView)
+//        loadingView.frame = CGRect(x: 0,
+//                                    y: 0,
+//                                    width: view.frame.size.width,
+//                                    height: height)
+//        
+//        loadingView.layer.borderColor =  UIColor.white.cgColor
+//        loadingView.layer.borderWidth = 2
+//        loadingView.layer.cornerRadius = 10
     }
     
     func setupARSceneRecorder() {
@@ -90,15 +142,23 @@ class RecordVideoViewController: UIViewController {
 //        recorder = RecordAR(ARSceneKit: sceneView)
 //        recorder?.fps = .fps60
         view.addSubview(sceneView)
+//        view.addSubview(loadingView)
         view.addSubview(collectionView)
+        view.sendSubviewToBack(sceneView)
+//        view.sendSubviewToBack(loadingView)
+        view.bringSubviewToFront(collectionView)
         view.addSubview(bgView)
         bgView.addSubview(shutterButton)
+        view.bringSubviewToFront(bgView)
+        view.bringSubviewToFront(shutterButton)
+        
+        height = CGFloat(view.frame .size.height - 200)
         
         sceneView.delegate = self
         sceneView.frame = CGRect(x: 0, 
                                  y: 0,
                                  width: view.frame.size.width,
-                                 height: view.frame .size.height - 200)
+                                 height: height)
         sceneView.clipsToBounds = true
         sceneView.layer.borderColor =  UIColor.white.cgColor
         sceneView.layer.borderWidth = 2
@@ -124,6 +184,8 @@ class RecordVideoViewController: UIViewController {
             paddingBottom: 15
         )
         collectionView.setHeight(110)
+
+        
     }
     
     func setupCollectionView() {
@@ -132,7 +194,7 @@ class RecordVideoViewController: UIViewController {
         collectionView.alwaysBounceHorizontal = true
         collectionView.bounces = true
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.contentInset = .init(top: 0, left: 20, bottom: 0, right: 20)
+        collectionView.contentInset = .init(top: 0, left: 60, bottom: 0, right: 60)
         collectionView.register(MoustachesCollectionViewCell.self, forCellWithReuseIdentifier: MoustachesCollectionViewCell.identifier)
         
         collectionView.dataSource = self
@@ -180,6 +242,8 @@ class RecordVideoViewController: UIViewController {
         } else {
 //            recorder?.record()
 //            capture?.recordAudio(enable: true)
+            if !isButtonEnabled { return }
+            
             capture?.start()
 //            capture?.recordAudio(enable: true)
             viewModel.isRecording = true
@@ -190,6 +254,25 @@ class RecordVideoViewController: UIViewController {
         
         print(": => recording tap my g")
     }
+    
+    func scrollCollectionViewTo(index: Int) {
+        let topIndexPath = IndexPath(item: index, section: 0)
+        collectionView.scrollToItem(at: topIndexPath, at: .centeredHorizontally, animated: true)
+        selectedIdx = index
+    }
+    
+//    private func setLoadingScreen() {
+//        view.isUserInteractionEnabled = false
+//        
+//        add(loadingView)
+//        view.bringSubviewToFront(loadingView.view)
+//        loadingView.view.fillSuperview()
+//        loadingView.view.backgroundColor = .black
+//    }
+//    
+//    private func removeLoadingScreen() {
+//        loadingView.remove()
+//    }
     
 }
 
@@ -204,7 +287,7 @@ extension RecordVideoViewController: ARSCNViewDelegate {
         faceNode.geometry?.firstMaterial?.transparency = 0
         
         glassesPlane.firstMaterial?.isDoubleSided = true
-        updateGlasses(with: 0)
+        updateGlasses(with: 3)
         
         glassesNode.position.z = faceNode.boundingBox.max.z * 3 / 4
         glassesNode.position.y = viewModel.nodeYPosition
@@ -242,6 +325,8 @@ extension RecordVideoViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(":cell clicked => ")
+        
+        scrollCollectionViewTo(index: indexPath.row)
         updateGlasses(with: indexPath.row)
     }
 }

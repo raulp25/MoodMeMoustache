@@ -9,6 +9,7 @@ import UIKit
 
 final class VideoFeedViewController: UIViewController {
     private let viewModel = VideoFeedViewModel()
+    private let loadingView = LoadingViewController(spinnerColors: [#colorLiteral(red: 0.7818982904, green: 0.5797014751, blue: 0.9752335696, alpha: 1)])
     
     private let navTitleLabel: UILabel = {
        let label = UILabel()
@@ -70,7 +71,15 @@ final class VideoFeedViewController: UIViewController {
         setupUI()
         setupCollectionView()
         setupDelegates()
-        Task{ await viewModel.getAllVideos() }
+        setLoadingScreen()
+        Task{
+            await viewModel.getAllVideos()
+            if !viewModel.isLoading {
+                DispatchQueue.main.async { [weak self] in
+                    self?.removeLoadingScreen()
+                }
+            }
+        }
     }
     
     private func setupUI() {
@@ -121,14 +130,14 @@ final class VideoFeedViewController: UIViewController {
 
     }
     
-    func setupDelegates() {
-        viewModel.delegate = self
-    }
-    
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.refreshControl = refresher
+    }
+    
+    func setupDelegates() {
+        viewModel.delegate = self
     }
     
     @objc private func handleRefresh() {
@@ -142,6 +151,20 @@ final class VideoFeedViewController: UIViewController {
                 tabBarController.selectedIndex = 1
             }
         }
+    }
+    
+    private func setLoadingScreen() {
+        view.isUserInteractionEnabled = false
+        
+        add(loadingView)
+        view.bringSubviewToFront(loadingView.view)
+        loadingView.view.fillSuperview()
+        loadingView.view.backgroundColor = .clear
+    }
+    
+    private func removeLoadingScreen() {
+        view.isUserInteractionEnabled = true
+        loadingView.remove()
     }
 }
 
@@ -162,9 +185,11 @@ extension VideoFeedViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        
         let video = viewModel.videos[indexPath.row]
-        let vc = EditVideoViewController(video: video, videoIndex: indexPath.row)
+        let vc = EditVideoViewController(viewModel: EditVideoViewModel(video: video, videoIndex: indexPath.row))
         vc.delegate = self
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -197,6 +222,6 @@ extension VideoFeedViewController: VideoFeedViewModelDelegate {
 
 extension VideoFeedViewController: EditVideoDelegate {
     func didSaved(tag: String, for videoIndex: Int) {
-        
+        viewModel.update(tag: tag, for: videoIndex)
     }
 }

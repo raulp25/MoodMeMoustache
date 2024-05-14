@@ -1,13 +1,15 @@
 //
-//  HomeTabCoordinator.swift
-//  pethug
+//  MockTabCoordinator.swift
+//  MoodMeMoustaches
 //
-//  Created by Raul Pena on 16/09/23.
+//  Created by Raul Pena on 14/05/24.
 //
+
+import Foundation
 
 import UIKit
 
-final class HomeTabCoordinator: NSObject, ChildTabCoordinator {
+final class MockTabCoordinator: NSObject, ChildTabCoordinator {
     var childCoordinators: [NavCoordinator] = .init()
     
     var parentCoordinator: InAppCoordinator?
@@ -15,7 +17,7 @@ final class HomeTabCoordinator: NSObject, ChildTabCoordinator {
     var rootViewController: UINavigationController = .init()
     
     func start() {
-        let vc = VideoFeedViewController()
+        let vc = MockVC()
         rootViewController.navigationBar.isHidden = true
         rootViewController.pushViewController(vc, animated: true)
     }
@@ -23,7 +25,7 @@ final class HomeTabCoordinator: NSObject, ChildTabCoordinator {
 }
 
 /// MoodMe ~ UINavigationControllerDelegate - This is just for Reference
-//extension HomeTabCoordinator: UINavigationControllerDelegate {
+//extension MockTabCoordinator: UINavigationControllerDelegate {
 //    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
 //        // Read the view controller we’re moving from.
 //        guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else {

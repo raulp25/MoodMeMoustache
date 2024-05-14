@@ -61,9 +61,9 @@ class GenericModal: UIView {
          description: String = "Description",
          textFieldPlaceHolder: String = "Enter tag",
          leftBtnText: String = "cancel",
-         leftBtnWidth: CGFloat = 50,
+         leftBtnWidth: CGFloat = 40,
          rightBtnText: String = "accept",
-         rightBtnWidth: CGFloat = 50)
+         rightBtnWidth: CGFloat = 40)
     {
         self.titleLabel.text = title
         self.descriptionLabel.text = description
@@ -132,7 +132,7 @@ class GenericModal: UIView {
             paddingBottom: verticalPadding
         )
         
-        leftBtn.setDimensions(height: 49, width: 120)
+        leftBtn.setDimensions(height: 40, width: 120)
         
         rightBtn.anchor(
             bottom: bottomAnchor,

@@ -42,20 +42,4 @@ final class MainTabBarController: UITabBarController {
     }
 }
 
-final class MockVC: UIViewController {
-    private let textLabel: UILabel = {
-       let label = UILabel()
-        label.text = "MockVC"
-        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
-        label.textColor = .label
-        return label
-    }()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .red
-        
-        view.addSubview(textLabel)
-        
-        textLabel.center(inView: view)
-    }
-}
+

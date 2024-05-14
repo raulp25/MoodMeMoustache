@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct Video: Codable {
-    var id: String = NSUUID().uuidString
+    @DocumentID var id: String? = UUID().uuidString
     var videoUrl: String
     var duration: Double
     var tag: String
+    var timestamp: Timestamp
 }

@@ -34,9 +34,9 @@ final class InAppCoordinator: StateCoordinator, ChildControllerManagable {
         case .add:
             childCoordinator = RecordVideoTabCoordinator()
         case .favorites:
-            childCoordinator = HomeTabCoordinator()
+            childCoordinator = MockTabCoordinator()
         case .profile:
-            childCoordinator = HomeTabCoordinator()
+            childCoordinator = MockTabCoordinator()
         }
 
         childCoordinator.start()

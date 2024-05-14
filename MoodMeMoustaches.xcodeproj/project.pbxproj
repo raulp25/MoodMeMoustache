@@ -38,7 +38,6 @@
 		C40310C52BF3283100E469C0 /* NavCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C403109A2BF3283100E469C0 /* NavCoordinatorProtocol.swift */; };
 		C40310C62BF3283100E469C0 /* RocketListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C403109D2BF3283100E469C0 /* RocketListCell.swift */; };
 		C40310C72BF3283100E469C0 /* MoustachesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C403109F2BF3283100E469C0 /* MoustachesCollectionViewCell.swift */; };
-		C40310C82BF3283100E469C0 /* RocketListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310A02BF3283100E469C0 /* RocketListCollectionViewCell.swift */; };
 		C40310C92BF3283100E469C0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310A12BF3283100E469C0 /* SpinnerView.swift */; };
 		C40310CA2BF3283100E469C0 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310A52BF3283100E469C0 /* ViewModel.swift */; };
 		C40310CB2BF3283100E469C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310A62BF3283100E469C0 /* HomeViewController.swift */; };
@@ -61,6 +60,12 @@
 		C40310EE2BF3286A00E469C0 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310EB2BF3286A00E469C0 /* UIViewController+Extensions.swift */; };
 		C40310EF2BF3286A00E469C0 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310EC2BF3286A00E469C0 /* UIView+Extensions.swift */; };
 		C40310F02BF3286A00E469C0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310ED2BF3286A00E469C0 /* Colors.swift */; };
+		C42E508D2BF3E8CF009CF01D /* EditVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E508C2BF3E8CF009CF01D /* EditVideoViewModel.swift */; };
+		C42E50902BF3F27B009CF01D /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E508F2BF3F27B009CF01D /* LoadingViewController.swift */; };
+		C42E50922BF40A40009CF01D /* RemoveFileFromTempFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E50912BF40A40009CF01D /* RemoveFileFromTempFolder.swift */; };
+		C42E50952BF40DD5009CF01D /* MockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E50942BF40DD5009CF01D /* MockViewController.swift */; };
+		C42E50982BF40E23009CF01D /* MockTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E50972BF40E23009CF01D /* MockTabCoordinator.swift */; };
+		C42E509A2BF413DC009CF01D /* CreateThumbnailFromVideoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E50992BF413DC009CF01D /* CreateThumbnailFromVideoOperation.swift */; };
 		C45D75E12BF32AF6005EF17A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45D75E02BF32AF6005EF17A /* Player.swift */; };
 		C48EFE7D2BF330A300DAAF06 /* DurationFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48EFE7C2BF330A300DAAF06 /* DurationFormatter.swift */; };
 		C4C2FE492BF3A6C400294E31 /* UIButton+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C2FE482BF3A6C400294E31 /* UIButton+Factory.swift */; };
@@ -139,7 +144,6 @@
 		C403109A2BF3283100E469C0 /* NavCoordinatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		C403109D2BF3283100E469C0 /* RocketListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RocketListCell.swift; sourceTree = "<group>"; };
 		C403109F2BF3283100E469C0 /* MoustachesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoustachesCollectionViewCell.swift; sourceTree = "<group>"; };
-		C40310A02BF3283100E469C0 /* RocketListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RocketListCollectionViewCell.swift; sourceTree = "<group>"; };
 		C40310A12BF3283100E469C0 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		C40310A52BF3283100E469C0 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		C40310A62BF3283100E469C0 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +166,12 @@
 		C40310EB2BF3286A00E469C0 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		C40310EC2BF3286A00E469C0 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		C40310ED2BF3286A00E469C0 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		C42E508C2BF3E8CF009CF01D /* EditVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoViewModel.swift; sourceTree = "<group>"; };
+		C42E508F2BF3F27B009CF01D /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		C42E50912BF40A40009CF01D /* RemoveFileFromTempFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFileFromTempFolder.swift; sourceTree = "<group>"; };
+		C42E50942BF40DD5009CF01D /* MockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewController.swift; sourceTree = "<group>"; };
+		C42E50972BF40E23009CF01D /* MockTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTabCoordinator.swift; sourceTree = "<group>"; };
+		C42E50992BF413DC009CF01D /* CreateThumbnailFromVideoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateThumbnailFromVideoOperation.swift; sourceTree = "<group>"; };
 		C45D75E02BF32AF6005EF17A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C48EFE7C2BF330A300DAAF06 /* DurationFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationFormatter.swift; sourceTree = "<group>"; };
 		C4C2FE482BF3A6C400294E31 /* UIButton+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Factory.swift"; sourceTree = "<group>"; };
@@ -353,6 +363,7 @@
 				C40310962BF3283100E469C0 /* RecordVideoTabCoordinator.swift */,
 				C40310972BF3283100E469C0 /* ChildTabCoordinatorProtocol.swift */,
 				C40310982BF3283100E469C0 /* HomeTabCoordinator.swift */,
+				C42E50972BF40E23009CF01D /* MockTabCoordinator.swift */,
 			);
 			path = ChildTabCoordinators;
 			sourceTree = "<group>";
@@ -386,7 +397,6 @@
 			isa = PBXGroup;
 			children = (
 				C403109F2BF3283100E469C0 /* MoustachesCollectionViewCell.swift */,
-				C40310A02BF3283100E469C0 /* RocketListCollectionViewCell.swift */,
 				C4C2FEA02BF3C16D00294E31 /* VideoFeedCollectionViewCell.swift */,
 			);
 			path = CollectionView;
@@ -469,6 +479,8 @@
 		C40310B42BF3283100E469C0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C42E50932BF40DC6009CF01D /* MockVC */,
+				C42E508E2BF3F264009CF01D /* LoadingView */,
 				C4C2FEA52BF3D11100294E31 /* GenericVideoPlayer */,
 				C4C2FE4F2BF3AB3300294E31 /* CustomTextField */,
 				C4C2FE4C2BF3A6F400294E31 /* Modal */,
@@ -587,6 +599,30 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C42E508B2BF3E8C1009CF01D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C42E508C2BF3E8CF009CF01D /* EditVideoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C42E508E2BF3F264009CF01D /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				C42E508F2BF3F27B009CF01D /* LoadingViewController.swift */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		C42E50932BF40DC6009CF01D /* MockVC */ = {
+			isa = PBXGroup;
+			children = (
+				C42E50942BF40DD5009CF01D /* MockViewController.swift */,
+			);
+			path = MockVC;
+			sourceTree = "<group>";
+		};
 		C45D75DF2BF32A8C005EF17A /* Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,6 +635,8 @@
 			isa = PBXGroup;
 			children = (
 				C48EFE7C2BF330A300DAAF06 /* DurationFormatter.swift */,
+				C42E50912BF40A40009CF01D /* RemoveFileFromTempFolder.swift */,
+				C42E50992BF413DC009CF01D /* CreateThumbnailFromVideoOperation.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -659,6 +697,7 @@
 		C4C2FEA22BF3CEAF00294E31 /* EditVideo */ = {
 			isa = PBXGroup;
 			children = (
+				C42E508B2BF3E8C1009CF01D /* ViewModel */,
 				C4C2FEA32BF3CEBC00294E31 /* EditVideoViewController.swift */,
 			);
 			path = EditVideo;
@@ -789,7 +828,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4C2FE962BF3B7B600294E31 /* ValidatorType.swift in Sources */,
-				C40310C82BF3283100E469C0 /* RocketListCollectionViewCell.swift in Sources */,
 				C40310F02BF3286A00E469C0 /* Colors.swift in Sources */,
 				C40310C12BF3283100E469C0 /* InAppCoordinator.swift in Sources */,
 				C40310E62BF3285B00E469C0 /* RocketListMapper.swift in Sources */,
@@ -800,6 +838,7 @@
 				C4C2FE982BF3B7B600294E31 /* Validatable.swift in Sources */,
 				C40310762BF3278000E469C0 /* ARCapture-dummy.m in Sources */,
 				C4C2FE992BF3B7B600294E31 /* ValidationState.swift in Sources */,
+				C42E50952BF40DD5009CF01D /* MockViewController.swift in Sources */,
 				C40310EE2BF3286A00E469C0 /* UIViewController+Extensions.swift in Sources */,
 				C40310D32BF3283100E469C0 /* CustomButton.swift in Sources */,
 				C40310D52BF3283100E469C0 /* UICollectionView+Factory.swift in Sources */,
@@ -810,6 +849,7 @@
 				C40310E72BF3285B00E469C0 /* RocketListService.swift in Sources */,
 				C40310CD2BF3283100E469C0 /* MainTabBarController.swift in Sources */,
 				C4C2FEA72BF3D12500294E31 /* GenericVideoPlayerViewController.swift in Sources */,
+				C42E50982BF40E23009CF01D /* MockTabCoordinator.swift in Sources */,
 				C40310C62BF3283100E469C0 /* RocketListCell.swift in Sources */,
 				C4C2FE4E2BF3A6FE00294E31 /* GenericModal.swift in Sources */,
 				C4C2FEA42BF3CEBC00294E31 /* EditVideoViewController.swift in Sources */,
@@ -831,12 +871,16 @@
 				C4C2FE4B2BF3A6EE00294E31 /* DummyView.swift in Sources */,
 				C40310CE2BF3283100E469C0 /* RecordVideoViewModel.swift in Sources */,
 				C40310DA2BF3284700E469C0 /* Rocket.swift in Sources */,
+				C42E508D2BF3E8CF009CF01D /* EditVideoViewModel.swift in Sources */,
 				C4C2FE8C2BF3B63E00294E31 /* Video.swift in Sources */,
 				C40310682BF3277100E469C0 /* ARAssetWriter.swift in Sources */,
 				C40310D02BF3283100E469C0 /* RecordVideoController.swift in Sources */,
+				C42E50902BF3F27B009CF01D /* LoadingViewController.swift in Sources */,
+				C42E50922BF40A40009CF01D /* RemoveFileFromTempFolder.swift in Sources */,
 				C4C2FE972BF3B7B600294E31 /* ValidatorFactory.swift in Sources */,
 				C40310D62BF3283100E469C0 /* SceneDelegate.swift in Sources */,
 				C40310D22BF3283100E469C0 /* FinalPreViewViewController.swift in Sources */,
+				C42E509A2BF413DC009CF01D /* CreateThumbnailFromVideoOperation.swift in Sources */,
 				C40310C32BF3283100E469C0 /* ChildTabCoordinatorProtocol.swift in Sources */,
 				C40310C52BF3283100E469C0 /* NavCoordinatorProtocol.swift in Sources */,
 				C48EFE7D2BF330A300DAAF06 /* DurationFormatter.swift in Sources */,
@@ -981,6 +1025,10 @@
 				DEVELOPMENT_TEAM = 75SHBQ42MK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoodMeMoustaches/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = ddsdfsd;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = ddddsdsds;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = sddfdsfds;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = dfsfew;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1008,6 +1056,10 @@
 				DEVELOPMENT_TEAM = 75SHBQ42MK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoodMeMoustaches/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = ddsdfsd;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = ddddsdsds;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = sddfdsfds;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = dfsfew;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
