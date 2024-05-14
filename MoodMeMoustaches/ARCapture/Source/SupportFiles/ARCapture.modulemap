@@ -1,0 +1,6 @@
+framework module ARCapture {
+  umbrella header "ARCapture-umbrella.h"
+
+  export *
+  module * { export * }
+}
