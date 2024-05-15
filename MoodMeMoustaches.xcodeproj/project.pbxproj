@@ -40,7 +40,7 @@
 		C40310C92BF3283100E469C0 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310A12BF3283100E469C0 /* SpinnerView.swift */; };
 		C40310CE2BF3283100E469C0 /* RecordVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310AC2BF3283100E469C0 /* RecordVideoViewModel.swift */; };
 		C40310CF2BF3283100E469C0 /* RecordVideoContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310AD2BF3283100E469C0 /* RecordVideoContainerViewController.swift */; };
-		C40310D02BF3283100E469C0 /* RecordVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310AE2BF3283100E469C0 /* RecordVideoController.swift */; };
+		C40310D02BF3283100E469C0 /* RecordVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310AE2BF3283100E469C0 /* RecordVideoViewController.swift */; };
 		C40310D12BF3283100E469C0 /* FinalPreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310B22BF3283100E469C0 /* FinalPreViewModel.swift */; };
 		C40310D22BF3283100E469C0 /* FinalPreViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310B32BF3283100E469C0 /* FinalPreViewViewController.swift */; };
 		C40310D32BF3283100E469C0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40310B62BF3283100E469C0 /* CustomButton.swift */; };
@@ -140,7 +140,7 @@
 		C40310A12BF3283100E469C0 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		C40310AC2BF3283100E469C0 /* RecordVideoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideoViewModel.swift; sourceTree = "<group>"; };
 		C40310AD2BF3283100E469C0 /* RecordVideoContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideoContainerViewController.swift; sourceTree = "<group>"; };
-		C40310AE2BF3283100E469C0 /* RecordVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideoController.swift; sourceTree = "<group>"; };
+		C40310AE2BF3283100E469C0 /* RecordVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordVideoViewController.swift; sourceTree = "<group>"; };
 		C40310B22BF3283100E469C0 /* FinalPreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalPreViewModel.swift; sourceTree = "<group>"; };
 		C40310B32BF3283100E469C0 /* FinalPreViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalPreViewViewController.swift; sourceTree = "<group>"; };
 		C40310B62BF3283100E469C0 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -400,7 +400,7 @@
 			children = (
 				C40310AB2BF3283100E469C0 /* ViewModel */,
 				C40310AD2BF3283100E469C0 /* RecordVideoContainerViewController.swift */,
-				C40310AE2BF3283100E469C0 /* RecordVideoController.swift */,
+				C40310AE2BF3283100E469C0 /* RecordVideoViewController.swift */,
 			);
 			path = RecordVideo;
 			sourceTree = "<group>";
@@ -802,7 +802,7 @@
 				C42E508D2BF3E8CF009CF01D /* EditVideoViewModel.swift in Sources */,
 				C4C2FE8C2BF3B63E00294E31 /* Video.swift in Sources */,
 				C40310682BF3277100E469C0 /* ARAssetWriter.swift in Sources */,
-				C40310D02BF3283100E469C0 /* RecordVideoController.swift in Sources */,
+				C40310D02BF3283100E469C0 /* RecordVideoViewController.swift in Sources */,
 				C42E50902BF3F27B009CF01D /* LoadingViewController.swift in Sources */,
 				C42E50922BF40A40009CF01D /* RemoveFileFromTempFolder.swift in Sources */,
 				C4C2FE972BF3B7B600294E31 /* ValidatorFactory.swift in Sources */,

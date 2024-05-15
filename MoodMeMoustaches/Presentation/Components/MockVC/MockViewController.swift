@@ -12,7 +12,7 @@ final class MockVC: UIViewController {
        let label = UILabel()
         label.text = "MoodMe 🇺🇸"
         label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
-        label.textColor = .label
+        label.textColor = .white
         return label
     }()
     override func viewDidLoad() {

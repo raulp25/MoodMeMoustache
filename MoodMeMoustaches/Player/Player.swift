@@ -62,4 +62,8 @@ final class Player {
             .store(in: &subscriptions)
     }
     
+    func pause() {
+        player.pause()
+    }
+    
 }

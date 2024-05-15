@@ -14,7 +14,7 @@ final class VideoFeedViewController: UIViewController {
     private let navTitleLabel: UILabel = {
        let label = UILabel()
         label.text = "MoodMe 🇺🇸"
-        label.textColor = .label
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return label
     }()
@@ -51,7 +51,7 @@ final class VideoFeedViewController: UIViewController {
     
     private let collectionView: UICollectionView = {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        cv.backgroundColor = .systemBackground
+        cv.backgroundColor = .black
         cv.allowsSelection = true
         cv.register(VideoFeedCollectionViewCell.self, forCellWithReuseIdentifier: VideoFeedCollectionViewCell.identifier)
         return cv
@@ -83,7 +83,7 @@ final class VideoFeedViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .black
         
         view.addSubview(navTitleLabel)
         view.addSubview(createVideoButtonContainerUIView)

@@ -170,9 +170,24 @@ final class RecordVideoViewController: UIViewController {
         return layout
     }
     
-    private func updateGlasses(with index: Int) {
+    private func updateMoustache(with index: Int) {
         let imageName = "moustache\(index)"
+        updateTransformAndScale(for: index)
         glassesPlane.firstMaterial?.diffuse.contents = UIImage(named: imageName)
+    }
+    
+    private func updateTransformAndScale(for index: Int) {
+        let moustacheData = viewModel.moustachesData[index]
+        glassesNode.position.x = moustacheData.posX
+        glassesNode.position.y = moustacheData.posY
+        glassesNode.position.z = moustacheData.posZ
+        
+        updateSize(with: moustacheData.scale)
+    }
+    
+    private func updateSize(with scale: CGFloat) {
+        glassesPlane.width = scale * viewModel.planeWidth
+        glassesPlane.height = scale * viewModel.planeHeight
     }
     
     @objc private func didTapRecordVideo() {
@@ -218,10 +233,8 @@ extension RecordVideoViewController: ARSCNViewDelegate {
         faceNode.geometry?.firstMaterial?.transparency = 0
         
         glassesPlane.firstMaterial?.isDoubleSided = true
-        updateGlasses(with: 3)
+        updateMoustache(with: 3)
         
-        glassesNode.position.z = faceNode.boundingBox.max.z * 3 / 4
-        glassesNode.position.y = viewModel.nodeYPosition
         glassesNode.geometry = glassesPlane
 
         faceNode.addChildNode(glassesNode)
@@ -256,7 +269,7 @@ extension RecordVideoViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         scrollCollectionViewTo(index: indexPath.row)
-        updateGlasses(with: indexPath.row)
+        updateMoustache(with: indexPath.row)
     }
 }
 

@@ -59,6 +59,7 @@ final class FinalPreViewViewController: UIViewController {
         
         // Remove the recorded video url that was stored in a temp directory
         // since we don't need it anymore at this point
+        print(":view did dissapera ")
         removeFileFromTempFolder(url: url)
     }
     
@@ -148,6 +149,9 @@ final class FinalPreViewViewController: UIViewController {
 
 private extension FinalPreViewViewController {
     func showModal() {
+        
+        player.pause()
+        
         let uploadVideoView = GenericModal(title: "Video tag",
                                          description: "Set your video tag",
                                          leftBtnWidth: 100,
@@ -156,14 +160,14 @@ private extension FinalPreViewViewController {
         
         
         add(dummyView)
-        self.view.bringSubviewToFront(dummyView.view)
+//        self.view.bringSubviewToFront(dummyView.view)
         dummyView.view.addSubview(uploadVideoView)
 
         dummyView.view
             .fillSuperview()
         dummyView.view.alpha = 0
         dummyView.view.backgroundColor = .black.withAlphaComponent(0.3)
-        
+        dummyView.view.isUserInteractionEnabled = true
         uploadVideoView
             .center(inView: dummyView.view)
         uploadVideoView.setDimensions(
@@ -193,13 +197,15 @@ private extension FinalPreViewViewController {
 
 extension FinalPreViewViewController: GenericModalDelegate {
     func didTapLeftBtn() {
-        print("DEBUG: tapped left button => ")
         dismissModal()
     }
     
     func didTapRightBtn() {
-        dismissModal()
-        setLoadingScreen()
+        // force main thread cause sometimes accept button wont receive the touch event
+        DispatchQueue.main.async { [weak self] in
+            self?.dismissModal()
+            self?.setLoadingScreen()
+        }
         Task {
             await viewModel.uploadVideo(url: url, duration: player.itemDuration, tag: viewModel.tag)
             DispatchQueue.main.async { [weak self] in

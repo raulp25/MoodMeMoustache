@@ -36,18 +36,46 @@ class GenericModal: UIView {
         return textField
     }()
     
-    private lazy var leftBtn: UIButton = {
-        let btn = CustomButton(viewModel: .init(title: "cancel"))
-        btn.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
-        btn.addTarget(self, action: #selector(didTapLeftBtn), for: .touchUpInside)
-        return btn
+    private lazy var cancelButtonContainerUIView: UIView = {
+        let uv = UIView()
+        uv.layer.cornerRadius = 10
+        uv.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLeftBtn))
+        uv.isUserInteractionEnabled = true
+        uv.addGestureRecognizer(tapGesture)
+        return uv
     }()
     
-    private lazy var rightBtn: UIButton = {
-        let btn = CustomButton(viewModel: .init(title: "accpet"))
-        btn.backgroundColor = #colorLiteral(red: 0.7818982904, green: 0.5797014751, blue: 0.9752335696, alpha: 1)
-        btn.addTarget(self, action: #selector(didTapRightBtn), for: .touchUpInside)
-        return btn
+    private lazy var cancelButtonLabel: UILabel = {
+       let label = UILabel()
+        label.text = "Cancel"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLeftBtn))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tapGesture)
+        return label
+    }()
+    
+    private lazy var createVideoButtonContainerUIView: UIView = {
+        let uv = UIView()
+        uv.layer.cornerRadius = 10
+        uv.backgroundColor = #colorLiteral(red: 0.7818982904, green: 0.5797014751, blue: 0.9752335696, alpha: 1)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRightBtn))
+        uv.isUserInteractionEnabled = true
+        uv.addGestureRecognizer(tapGesture)
+        return uv
+    }()
+    
+    private lazy var createVideoButtonLabel: UILabel = {
+       let label = UILabel()
+        label.text = "Record"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRightBtn))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tapGesture)
+        return label
     }()
     
     private var horizontalPadding: CGFloat = 25
@@ -72,9 +100,6 @@ class GenericModal: UIView {
         
         super.init(frame: .zero)
         
-        rightBtn.setTitle(rightBtnText, for: .normal)
-        leftBtn.setTitle(leftBtnText, for: .normal)
-        
         NotificationCenter.default.addObserver(self, 
                                                selector: #selector(textFieldDidChange),
                                                name: UITextField.textDidChangeNotification,
@@ -97,8 +122,13 @@ class GenericModal: UIView {
         addSubview(titleLabel)
         addSubview(descriptionLabel)
         addSubview(tagTextField)
-        addSubview(leftBtn)
-        addSubview(rightBtn)
+        
+        addSubview(cancelButtonContainerUIView)
+        cancelButtonContainerUIView.addSubview(cancelButtonLabel)
+        
+        addSubview(createVideoButtonContainerUIView)
+        createVideoButtonContainerUIView.addSubview(createVideoButtonLabel)
+        
         
         titleLabel.anchor(
             top: topAnchor,
@@ -125,24 +155,31 @@ class GenericModal: UIView {
             paddingRight: horizontalPadding
         )
         
-        leftBtn.anchor(
+        cancelButtonContainerUIView.anchor(
             left: leftAnchor,
             bottom: bottomAnchor,
             paddingLeft: horizontalPadding,
             paddingBottom: verticalPadding
         )
         
-        leftBtn
-            .setDimensions(height: 40, width: 120)
+        cancelButtonContainerUIView
+            .setDimensions(height: 42, width: 120)
         
-        rightBtn.anchor(
+        cancelButtonLabel
+            .center(inView: cancelButtonContainerUIView)
+        
+        createVideoButtonContainerUIView.anchor(
             bottom: bottomAnchor,
             right: rightAnchor,
             paddingBottom: verticalPadding,
             paddingRight: horizontalPadding
         )
-        rightBtn
-            .setDimensions(height: 40, width: 120)
+        createVideoButtonContainerUIView
+            .setDimensions(height: 42, width: 120)
+        
+        createVideoButtonLabel
+            .center(inView: createVideoButtonContainerUIView)
+        
     }
     
     @objc func textFieldDidChange(_ notification: Notification) {
