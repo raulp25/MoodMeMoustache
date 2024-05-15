@@ -91,6 +91,15 @@ final class RecordVideoViewController: UIViewController {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
         isButtonEnabled = false
+        capture?.stop({ url in
+            guard let url = url else { return }
+            DispatchQueue.main.async { [weak self] in
+             removeFileFromTempFolder(url: url)
+                self?.viewModel.isRecording = false
+                self?.bgView.backgroundColor = customRGBColor(red: 161, green: 86, blue: 227)
+                self?.bgView.layer.borderColor = UIColor.white.withAlphaComponent(0.6).cgColor
+            }
+        })
     }
         
     private func setupARSceneRecorder() {
