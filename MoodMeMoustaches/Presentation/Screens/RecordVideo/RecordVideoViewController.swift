@@ -121,7 +121,7 @@ final class RecordVideoViewController: UIViewController {
         view.bringSubviewToFront(shutterButton)
         
         height = CGFloat(view.frame .size.height - 200)
-        
+        sceneView.backgroundColor = .black
         sceneView.delegate = self
         sceneView.frame = CGRect(x: 0, 
                                  y: 0,

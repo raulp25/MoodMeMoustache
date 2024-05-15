@@ -59,6 +59,7 @@ final class VideoFeedViewController: UIViewController {
     
     private lazy var refresher: UIRefreshControl = {
        let refresher = UIRefreshControl()
+        refresher.tintColor = .white
         refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         return refresher
     }()

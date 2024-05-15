@@ -69,7 +69,7 @@ class GenericModal: UIView {
     
     private lazy var createVideoButtonLabel: UILabel = {
        let label = UILabel()
-        label.text = "Record"
+        label.text = "Save"
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapRightBtn))
